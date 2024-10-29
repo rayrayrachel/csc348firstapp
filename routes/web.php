@@ -4,7 +4,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return "This is the /home page";
 });
 
-//test commit
+Route::get('/blog', function () {
+    return "This is the /blog page";
+});
