@@ -18,8 +18,8 @@ class BloggerFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make('P@ssW0rd'),
             'created_at' => now(),
             'updated_at' => now(),
