@@ -10,6 +10,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(AnimalTableSeeder::class);
+        $this->call(BloggerSeeder::class);
     }
 }
