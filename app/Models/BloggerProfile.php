@@ -4,12 +4,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Blogger extends Model
+class BloggerProfile extends Model
 {
     use HasFactory;
 
-    public function bloggerProfile()
+    public function blogger()
     {
-        return $this->hasOne(BloggerProfile::class);
+        return $this->belongsTo(Blogger::class);
     }
 }
