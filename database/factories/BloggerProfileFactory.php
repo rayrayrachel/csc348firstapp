@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\BloggerProfile;
+use App\Models\Blogger;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,20 +11,17 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class BloggerProfileFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = BloggerProfile::class; // Ensure this line is present
+
     public function definition(): array
     {
         return [
-            'blogger_id' => fake()->numberBetween(1,10),
-            'bio' => fake()->paragraph(),
-            'website' => fake()->url(),
-            'profile_picture' => fake()->imageUrl(640, 480, 'people'),
-            'location' => fake()->city(),
-            'date_of_birth' => fake()->date('Y-m-d', '2000-01-01'),
+            'blogger_id' => Blogger::inRandomOrder()->first()->id,
+            'bio' => $this->faker->paragraph(),
+            'website' => $this->faker->url(),
+            'profile_picture' => $this->faker->imageUrl(640, 480, 'people'),
+            'location' => $this->faker->city(),
+            'date_of_birth' => $this->faker->date('Y-m-d', '2000-01-01'),
         ];
     }
 }

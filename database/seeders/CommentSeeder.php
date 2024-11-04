@@ -2,19 +2,18 @@
 
 namespace Database\Seeders;
 
-
 use App\Models\Comment;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Blogger; 
+use App\Models\Project;
 use Illuminate\Database\Seeder;
 
 class CommentSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Comment::factory()->count(10)->create();
+
+        if (Blogger::count() > 0 && Project::count() > 0) {
+            Comment::factory()->count(10)->create(); 
+        }
     }
 }

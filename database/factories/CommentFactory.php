@@ -9,13 +9,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
 {
-
+    protected $model = Comment::class;
 
     public function definition(): array
     {
         return [
-            'blogger_id'  => fake()->numberBetween(1,10),
-            'project_id'  => fake()->numberBetween(1,10),
+
+            'blogger_id' => Blogger::inRandomOrder()->value('id'),
+
+            'project_id' => Project::inRandomOrder()->value('id'),
             'content' => $this->faker->paragraph(),
         ];
     }
