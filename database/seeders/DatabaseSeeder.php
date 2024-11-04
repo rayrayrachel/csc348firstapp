@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BloggerProfileSeeder::class);
         $this->call(ProjectSeeder::class);
         $this->call(CommentSeeder::class);
-
+        $this->call(CategorySeeder::class);
 
    }
 }

@@ -3,17 +3,20 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class ProjectSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Project::factory()->count(10)->create();
+        Project::factory()
+            ->count(10)
+            ->create()
+            ->each(function ($project) {
+               
+                $categories = Category::inRandomOrder()->take(rand(1, 3))->pluck('id');
+                $project->categories()->attach($categories);
+            });
     }
 }
