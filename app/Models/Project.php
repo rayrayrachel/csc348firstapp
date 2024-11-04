@@ -13,6 +13,10 @@ class Project extends Model
     {
         return $this->belongsTo(Blogger::class); 
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
 
 }

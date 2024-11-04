@@ -15,7 +15,7 @@ class CommentFactory extends Factory
     {
         return [
             'blogger_id'  => fake()->numberBetween(1,10),
-
+            'project_id'  => fake()->numberBetween(1,10),
             'content' => $this->faker->paragraph(),
         ];
     }

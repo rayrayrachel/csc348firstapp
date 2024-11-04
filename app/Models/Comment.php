@@ -14,5 +14,11 @@ class Comment extends Model
         return $this->belongsTo(Blogger::class);
     }
 
+    public function projects()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+
 
 }
