@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Project extends Model
 {
     use HasFactory;
+
     public function bloggers()
     {
-        return $this->belongsTo(Bloggers::class);
+        return $this->belongsTo(Blogger::class); 
     }
 }
