@@ -17,8 +17,10 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(),
-            'description' => $this->faker->paragraph(),
+
+            'blogger_id'=> fake()->numberBetween(1,10),
+            'title' => fake()->sentence(),
+            'description' => fake()->paragraph(),
         ];
     }
 }

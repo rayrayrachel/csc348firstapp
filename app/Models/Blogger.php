@@ -12,4 +12,9 @@ class Blogger extends Model
     {
         return $this->hasOne(BloggerProfile::class);
     }
+
+    public function project(){
+        return $this->hasMany(Project::class);
+    }
+
 }
