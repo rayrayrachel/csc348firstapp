@@ -17,10 +17,15 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-
-            'blogger_id'=> fake()->numberBetween(1,10),
-            'title' => fake()->sentence(),
+            'blogger_id' => fake()->numberBetween(1, 10),
+            'title' => fake()->sentence(), 
             'description' => fake()->paragraph(),
+            
+
+            'status' => fake()->randomElement(['ongoing', 'completed', 'pending']),
+            'featureimage' => fake()->imageUrl(640, 480, 'projects', true), 
+            'methodology_used' => fake()->word(), 
+            'project_link' => fake()->url(), 
         ];
     }
 }

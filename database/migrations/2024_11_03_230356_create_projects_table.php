@@ -16,8 +16,11 @@ return new class extends Migration
             $table->foreignId('blogger_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('title');
             $table->string('description');
+            $table->string('status')->nullable();
+            $table->string('featureimage')->nullable();
+            $table->string('methodology_used')->nullable();
+            $table->string('project_link')->nullable();
             $table->timestamps();
-
   
         });
     }
