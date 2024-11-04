@@ -13,4 +13,6 @@ class Project extends Model
     {
         return $this->belongsTo(Blogger::class); 
     }
+
+
 }

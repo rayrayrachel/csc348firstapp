@@ -9,7 +9,7 @@ class Blogger extends Model
 {
     use HasFactory;
 
-    public function bloggerProfile()
+    public function bloggerProfiles()
     {
         return $this->hasOne(BloggerProfile::class);
     }
@@ -18,5 +18,11 @@ class Blogger extends Model
     {
         return $this->hasMany(Project::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    
     
 }
