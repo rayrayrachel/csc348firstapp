@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Blogger;
+use App\Models\User;
 use App\Models\BloggerProfile;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +14,7 @@ class BloggerProfileSeeder extends Seeder
     public function run(): void
     {
         
-        if (Blogger::count() > 0) {
+        if (User::count() > 0) {
             BloggerProfile::factory()->count(10)->create();
         }
     }

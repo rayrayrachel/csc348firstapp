@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Project;
 use App\Models\Category;
-use App\Models\Blogger;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ProjectSeeder extends Seeder
@@ -12,11 +12,11 @@ class ProjectSeeder extends Seeder
     public function run(): void
     {
         
-        $bloggers = Blogger::all();
+        $users = User::all();
         $categories = Category::all();
 
  
-        if ($bloggers->isNotEmpty() && $categories->isNotEmpty()) {
+        if ($users->isNotEmpty() && $categories->isNotEmpty()) {
             Project::factory()
                 ->count(10)
                 ->create()

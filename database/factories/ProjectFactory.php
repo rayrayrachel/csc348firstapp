@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Project;
-use App\Models\Blogger;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProjectFactory extends Factory
@@ -13,7 +13,7 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            'blogger_id' => Blogger::inRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'status' => $this->faker->randomElement(['ongoing', 'completed', 'pending']),

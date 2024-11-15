@@ -9,9 +9,9 @@ class Project extends Model
 {
     use HasFactory;
 
-    public function bloggers()
+    public function users()
     {
-        return $this->belongsTo(Blogger::class); 
+        return $this->belongsTo(User::class); 
     }
     public function comments()
     {

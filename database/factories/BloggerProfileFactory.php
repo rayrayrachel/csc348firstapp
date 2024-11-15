@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\BloggerProfile;
-use App\Models\Blogger;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -11,12 +11,12 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class BloggerProfileFactory extends Factory
 {
-    protected $model = BloggerProfile::class; // Ensure this line is present
+    protected $model = BloggerProfile::class;
 
     public function definition(): array
     {
         return [
-            'blogger_id' => Blogger::inRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
             'bio' => $this->faker->paragraph(),
             'website' => $this->faker->url(),
             'profile_picture' => $this->faker->imageUrl(640, 480, 'people'),

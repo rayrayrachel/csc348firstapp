@@ -8,8 +8,8 @@ class BloggerProfile extends Model
 {
     use HasFactory;
 
-    public function blogger()
+    public function users()
     {
-        return $this->belongsTo(Blogger::class);
+        return $this->belongsTo(User::class);
     }
 }

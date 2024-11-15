@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Blogger;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Seeder;
 
-class BloggerSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-       // Blogger::factory()->count(10)->create();
+        User::factory()->count(10)->create();
     }
 }
