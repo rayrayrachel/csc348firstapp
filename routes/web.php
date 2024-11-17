@@ -2,10 +2,18 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\BloggerProfile;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/bloggers/{bloggerprofile?}', function ($bloggerprofile = null) {
+    return view('bloggers', ['bloggerprofile' => $bloggerprofile]);
+})->name('bloggers');
+
+Route::get('/projects', [ProjectCongroller::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
