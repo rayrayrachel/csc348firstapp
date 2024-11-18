@@ -9,7 +9,7 @@ class BloggerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($bloggers = null)
+    public function index()
     {
         $bloggers = BloggerProfile::all();
         return view('bloggers',['bloggers'=>$bloggers]);
@@ -34,10 +34,19 @@ class BloggerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($bloggers = null)
+    public function show($profileID = null)
     {
-        $bloggers = BloggerProfile::all();
-        return view('bloggers',['bloggers'=>$bloggers]);
+
+        if ($profileID) {
+            $profile = BloggerProfile::findOrFail($profileID);       
+                if (!$profile) {
+                    return redirect()->route('bloggers')->with('error', 'Blogger not found');
+                }
+                return view('profile', compact('profile'));
+            }
+        return redirect()->route('bloggers');
+            
+        
     }
     /**
      * Show the form for editing the specified resource.

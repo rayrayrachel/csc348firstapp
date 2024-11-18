@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('blogger_profiles', function (Blueprint $table) {
             $table->id(); 
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('user_name');
             $table->text('bio')->nullable(); 
             $table->string('website')->nullable(); 
             $table->string('profile_picture')->nullable(); 

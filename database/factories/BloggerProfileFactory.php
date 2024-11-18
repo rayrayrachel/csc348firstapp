@@ -15,8 +15,12 @@ class BloggerProfileFactory extends Factory
 
     public function definition(): array
     {
+
+        $user = User::inRandomOrder()->first();
+
         return [
-            'user_id' => User::inRandomOrder()->first()->id,
+            'user_id' => $user->id, 
+            'user_name' => $user->name,
             'bio' => $this->faker->paragraph(),
             'website' => $this->faker->url(),
             'profile_picture' => $this->faker->imageUrl(640, 480, 'people'),

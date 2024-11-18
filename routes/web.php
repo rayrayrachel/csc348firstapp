@@ -15,9 +15,10 @@ Route::get('/', function () {
 // })->name('bloggers');
 
 Route::prefix('bloggers')->group(function () {
-    Route::get('/}', [BloggerController::class, 'index'])->name('bloggers');
-    Route::get('/{bloggerprofile?}', [BloggerController::class, 'show'])->name('{bloggerprofile?}');
+    Route::get('/', [BloggerController::class, 'index'])->name('bloggers');
+    Route::get('/{profile}', [BloggerController::class, 'show'])->name('blogger.profile');
 });
+
 
 Route::get('/projects', [BloggerController::class, 'index']);
 
