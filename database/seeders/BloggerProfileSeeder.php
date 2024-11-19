@@ -1,10 +1,10 @@
 <?php
-
 namespace Database\Seeders;
 
-use App\Models\User;
 use App\Models\BloggerProfile;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BloggerProfileSeeder extends Seeder
 {
@@ -13,9 +13,13 @@ class BloggerProfileSeeder extends Seeder
      */
     public function run(): void
     {
-        
-        if (User::count() > 0) {
-            BloggerProfile::factory()->count(10)->create();
+
+        $usersWithoutProfiles = User::doesntHave('bloggerProfiles')->get();
+
+        foreach ($usersWithoutProfiles as $user) {
+            BloggerProfile::factory()
+                ->forUser($user->id, $user->name) // Pass user_id and user_name
+                ->create();
         }
     }
 }

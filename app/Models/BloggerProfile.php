@@ -8,6 +8,11 @@ class BloggerProfile extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',     
+        'user_name',   
+    ];
+
     public function users()
     {
         return $this->belongsTo(User::class);
