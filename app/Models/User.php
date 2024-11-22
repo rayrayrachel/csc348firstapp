@@ -46,7 +46,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function bloggerProfiles()
+    public function bloggerProfile()
     {
         return $this->hasOne(BloggerProfile::class);
     }

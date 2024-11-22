@@ -16,8 +16,13 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+
+        $user = $request->user();
+        $bloggerProfile = $user->bloggerProfile;
+
         return view('profile.edit', [
             'user' => $request->user(),
+            'bloggerProfile' => $bloggerProfile,
         ]);
     }
 
@@ -26,16 +31,24 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+        ]);
+    
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
+       $user->update($validated);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+
+
 
     /**
      * Delete the user's account.

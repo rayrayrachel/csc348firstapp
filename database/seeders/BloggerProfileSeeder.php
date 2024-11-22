@@ -14,9 +14,9 @@ class BloggerProfileSeeder extends Seeder
     public function run(): void
     {
 
-        $usersWithoutProfiles = User::doesntHave('bloggerProfiles')->get();
+        $usersWithoutProfile = User::doesntHave('bloggerProfile')->get();
 
-        foreach ($usersWithoutProfiles as $user) {
+        foreach ($usersWithoutProfile as $user) {
             BloggerProfile::factory()
                 ->forUser($user->id, $user->name) // Pass user_id and user_name
                 ->create();

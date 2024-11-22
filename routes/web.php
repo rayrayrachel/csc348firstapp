@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\BloggerProfile;
 use App\Http\Controllers\BloggerController;
-
+use App\Http\Controllers\BloggerProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,7 +16,7 @@ Route::get('/', function () {
 
 Route::prefix('bloggers')->group(function () {
     Route::get('/', [BloggerController::class, 'index'])->name('bloggers');
-    Route::get('/{profile}', [BloggerController::class, 'show'])->name('blogger.profile');
+    Route::get('/{profile}', [BloggerController::class, 'show'])->name('bloggers.profile');
 });
 
 
@@ -30,6 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth'])->prefix('blogger/profile')->group(function () {
+    Route::get('/', [BloggerProfileController::class, 'show'])->name('blogger.profile');
+    Route::get('/edit', [BloggerProfileController::class, 'edit'])->name('blogger.profile.edit');
+    Route::patch('/', [BloggerProfileController::class, 'update'])->name('blogger.profile.update');
 });
 
 require __DIR__.'/auth.php';

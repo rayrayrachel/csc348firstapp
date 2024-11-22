@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user->bloggerProfiles()->create([
+        $user->bloggerProfile()->create([
             'user_name' => $user->name,
         ]);
 
