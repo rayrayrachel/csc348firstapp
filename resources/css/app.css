@@ -50,3 +50,16 @@ h3{
     width: auto;
 }
 
+.navbar-sticky-top
+{
+    position: sticky;
+    z-index: 999;
+    opacity:1;
+    width: 100%;
+    top:0;
+}
+
+.below-sticky
+{
+    top:1;
+}
