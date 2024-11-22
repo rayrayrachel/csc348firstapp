@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
+            {{ __('User Profile') }}
         </h2>
     </x-slot>
 
@@ -20,9 +20,11 @@
                 <div class="max-w-xl">
                     @include('profile.partials.display-blogger-form')
                 </div>
+                
                 <div class="flex items-center gap-4">
-                    <x-primary-button>{{ __('Update Information') }}</x-primary-button>
-
+                    <a href="{{ route('blogger.profile') }}" class="inline-block">
+                        <x-primary-button>{{ __('Update Information') }}</x-primary-button>
+                    </a>                
                 </div>
             </div>
 
