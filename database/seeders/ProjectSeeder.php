@@ -12,11 +12,11 @@ class ProjectSeeder extends Seeder
     public function run(): void
     {
         
-        $users = User::all();
+        $user = User::all();
         $categories = Category::all();
 
  
-        if ($users->isNotEmpty() && $categories->isNotEmpty()) {
+        if ($user->isNotEmpty() && $categories->isNotEmpty()) {
             Project::factory()
                 ->count(10)
                 ->create()

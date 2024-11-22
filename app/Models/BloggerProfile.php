@@ -17,7 +17,7 @@ class BloggerProfile extends Model
         'date_of_birth'
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

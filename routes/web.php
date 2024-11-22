@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Models\BloggerProfile;
 use App\Http\Controllers\BloggerController;
 use App\Http\Controllers\BloggerProfileController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,16 +21,16 @@ Route::prefix('bloggers')->group(function () {
 });
 
 
-Route::get('/projects', [BloggerController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
+Route::get('/projects/{project}', action: [ProjectController::class, 'show'])->name('projects.project');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/projects', [ProjectController::class, 'userProjects'])->name('projects.user');
 });
 
 Route::middleware(['auth'])->prefix('blogger/profile')->group(function () {
