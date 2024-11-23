@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 
+.pageHeader {
+    font-weight: 600; 
+    font-size: 1.25rem; 
+    color: #2d3748;
+    line-height: 1.25;
+}
+
+
 .blogger-profile-header {
     font-weight: 600; 
     font-size: 1.25rem;
