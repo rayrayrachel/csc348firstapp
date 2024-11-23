@@ -10,13 +10,20 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="blogger-profile">
 
-                        @if($profile)
-                            <h1 class="blogger-profile-header">{{ $profile->user_name }}'s Blog</h1>
-                            <p>{{ $profile->bio }}</p>  
-                            <p>These are the projects done by {{ $profile->user_name }}.</p>
-                        @else
-                            <h1>No such blogger</h1>
-                        @endif
+                    @if ($profile)
+                        <h1 class="blogger-profile-header">{{ $profile->user_name }}'s Blog</h1>
+                        <p>{{ $profile->bio }}</p>
+
+
+                        <div class="py-12">
+                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                <p>These are the projects done by {{ $profile->user_name }}.</p>
+                                <x-project-list :projects="$projects" />
+                            </div>
+                        </div>
+                    @else
+                        <h1>No such blogger</h1>
+                    @endif
 
                 </div>
             </div>

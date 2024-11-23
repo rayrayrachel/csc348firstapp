@@ -67,6 +67,7 @@ class BloggerProfileController extends Controller
      public function update(Request $request): RedirectResponse
      {
          $user = $request->user();
+
          $bloggerProfile = $user->bloggerProfile;
 
          $validated = $request->validate([

@@ -15,12 +15,17 @@ class ProjectController extends Controller
         return view('projects.index',['projects'=>$projects]);
     }
 
-    public function userProjects(Request $request)
-    {
-        $user = $request->user();
-        $projects =  $user->projects()->latest()->get(); 
-        return view('projects.user-projects', compact('projects'));
-    }
+// app/Http/Controllers/ProjectController.php
+
+public function userProjects(Request $request)
+{
+    $user = $request->user();
+    $projects = $user->projects()->latest()->get();  // Make sure this query returns data
+    $stats = ['total_projects' => $user->projects()->count()];
+    return view('dashboard', compact('projects', 'stats'));  // Pass the projects variable
+}
+
+    
 
 
     /**

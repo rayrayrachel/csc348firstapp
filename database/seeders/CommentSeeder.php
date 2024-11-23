@@ -13,7 +13,7 @@ class CommentSeeder extends Seeder
     {
 
         if (User::count() > 0 && Project::count() > 0) {
-            Comment::factory()->count(10)->create(); 
+            Comment::factory()->count(30)->create(); 
         }
     }
 }

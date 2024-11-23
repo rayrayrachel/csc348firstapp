@@ -36,18 +36,20 @@ class BloggerController extends Controller
      */
     public function show($profileID = null)
     {
-
         if ($profileID) {
-            $profile = BloggerProfile::findOrFail($profileID);       
-                if (!$profile) {
-                    return redirect()->route('bloggers')->with('error', 'Blogger not found');
-                }
-                return view('profile', compact('profile'));
+            $profile = BloggerProfile::findOrFail($profileID);
+            if (!$profile) {
+                return redirect()->route('bloggers')->with('error', 'Blogger not found');
             }
+
+            $user = $profile->user; 
+            $projects = $user->projects;  
+            return view('profile', compact('profile', 'projects')); 
+        }
+
         return redirect()->route('bloggers');
-            
-        
     }
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -18,7 +18,7 @@ class ProjectSeeder extends Seeder
  
         if ($user->isNotEmpty() && $categories->isNotEmpty()) {
             Project::factory()
-                ->count(10)
+                ->count(30)
                 ->create()
                 ->each(function ($project) use ($categories) {
                   
