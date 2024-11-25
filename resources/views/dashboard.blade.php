@@ -1,36 +1,37 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="page-header">
-            {{ __('Dashboard') }}
-        </h2>
+        <div class="flex justify-between items-center ">
+            <h2 class="page-header">
+                {{ __('Dashboard') }}
+            </h2>
+            <button id="toggleButton" onclick="toggleForm()" class="create-project-btn bg-[#36c73b]">
+                Create Project
+            </button>
+        </div>
     </x-slot>
 
     @section('content')
-        <div class="py-6">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
-                        <section>
-                            <h2>Stats</h2>
-                            <p>Total Projects: {{ $stats['total_projects'] }}</p>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="page-container">
 
-        <div class="py-6">
+
+
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-medium text-gray-900">{{ __('Your Projects') }}</h3>
-                    <button id="toggleButton" onclick="toggleForm()" class="create-post-btn bg-[#36c73b]">
-                        Create Project
-                    </button>
-                </div>
+
 
                 <div class="flex space-x-4">
 
                     <div id="projectList" class="w-full  transition-all">
+                        <div class="py-3">
+
+                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                <div class="p-6 text-gray-900">
+                                    <section>
+                                        <h2>Stats</h2>
+                                        <p>Total Projects: {{ $stats['total_projects'] }}</p>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
                         @livewire('project-list', ['authOnly' => true])
                     </div>
 
@@ -53,14 +54,14 @@
             form.style.display = "block";
             button.textContent = "Close Form";
             projectList.classList.add("lg:w-2/3");
-                    button.classList.remove("bg-[#36c73b]");
-                    button.classList.add("bg-gray-300");
+            button.classList.remove("bg-[#36c73b]");
+            button.classList.add("bg-gray-300");
         } else {
             form.style.display = "none";
             button.textContent = "Create Project";
             projectList.classList.remove("lg:w-2/3");
-                    button.classList.remove("bg-gray-300");
-                           button.classList.add("bg-[#36c73b]");             
+            button.classList.remove("bg-gray-300");
+            button.classList.add("bg-[#36c73b]");
         }
     }
 </script>
