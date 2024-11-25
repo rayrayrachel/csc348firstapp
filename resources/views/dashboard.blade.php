@@ -18,14 +18,10 @@
 
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="p-6 text-gray-900">
-                                <section>
-                                    <h2>Stats</h2>
-                                    <p>Total Projects: {{ $stats['total_projects'] }}</p>
-                                </section>
+            <livewire:statistics />
                             </div>
                         </div>
                         <div class="py-3">
-
                             @livewire('project-list', ['authOnly' => true])
                         </div>
                     </div>

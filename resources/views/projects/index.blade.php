@@ -6,7 +6,7 @@
     </x-slot>
 
     @section('content')
-        <div class="page-container">
+        {{-- <div class="page-container">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="space-y-6">
                     @forelse ($projects as $project)
@@ -40,6 +40,11 @@
                     @endforelse
                 </div>
             </div>
+        </div> --}}
+        <div class="page-container">
+        <div class="container">
+            @livewire('project-list')
+        </div>
         </div>
     @endsection
 </x-app-layout>

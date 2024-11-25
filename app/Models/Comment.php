@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Comment extends Model
 {
     use HasFactory;
@@ -18,7 +19,5 @@ class Comment extends Model
     {
         return $this->belongsTo(Project::class);
     }
-
-
 
 }
