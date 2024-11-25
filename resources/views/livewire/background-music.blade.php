@@ -7,10 +7,8 @@
     <script>
         const music = document.getElementById('background-music');
 
-        // Resume playback from the stored timestamp
         music.currentTime = @js($currentTime);
 
-        // Save playback time periodically
         setInterval(() => {
             if (!music.paused) {
                 Livewire.emit('updateTime', music.currentTime);

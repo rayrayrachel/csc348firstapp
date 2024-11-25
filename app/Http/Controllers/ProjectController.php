@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -11,21 +12,19 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with('user')->orderBy('created_at', 'desc')->get(); // Add ordering here
+        $projects = Project::with('user')->orderBy('created_at', 'desc')->get();
         return view('projects.index', ['projects' => $projects]);
     }
 
-// app/Http/Controllers/ProjectController.php
 
-public function userProjects(Request $request)
-{
-    $user = $request->user();
-    $projects = $user->projects()->latest()->get();  // Make sure this query returns data
-    $stats = ['total_projects' => $user->projects()->count()];
-    return view('dashboard', compact('projects', 'stats'));  // Pass the projects variable
-}
 
-    
+    public function userProjects(Request $request)
+    {
+        $user = $request->user();
+        $projects = $user->projects()->latest()->get();
+        $stats = ['total_projects' => $user->projects()->count()];
+        return view('dashboard', compact('projects', 'stats'));
+    }
 
 
     /**
@@ -49,10 +48,10 @@ public function userProjects(Request $request)
      */
     public function show($id)
     {
-        $project = Project::with('user')->findOrFail($id); 
+        $project = Project::with('user')->findOrFail($id);
         return view('projects.project', compact('project'));
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.

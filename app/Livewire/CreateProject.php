@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class CreateProject extends Component
 {
     use WithFileUploads;
-    
 
     public $title;
     public $description;
@@ -20,31 +19,29 @@ class CreateProject extends Component
     public $methodology_used;
     public $project_link;
 
-    // Validation rules
     protected $rules = [
         'title' => 'required|string|max:255',
         'description' => 'required|string',
         'status' => 'nullable|string',
-        'featureimage' => 'nullable|image|max:1024', // Optional image with max size of 1MB
+        'featureimage' => 'nullable|image|max:1024',
         'methodology_used' => 'nullable|string|max:255',
         'project_link' => 'nullable|url|max:255',
     ];
 
-    // Submit the form to create the project
+
     public function createProject()
     {
         $this->validate();
 
-        // Handle image upload if provided
+ 
         if ($this->featureimage) {
             $imagePath = $this->featureimage->store('project_images', 'public');
         } else {
             $imagePath = null;
         }
 
-        // Create a new project
         Project::create([
-            'user_id' => Auth::id(), // The authenticated user ID
+            'user_id' => Auth::id(),
             'title' => $this->title,
             'description' => $this->description,
             'status' => $this->status,
@@ -53,10 +50,10 @@ class CreateProject extends Component
             'project_link' => $this->project_link,
         ]);
 
-        // Reset the form after submission
+        $this->dispatch('projectCreated'); 
+
         $this->reset();
 
-        // Success message
         session()->flash('message', 'Project created successfully!');
     }
 
