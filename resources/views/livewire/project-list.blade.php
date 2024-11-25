@@ -1,4 +1,4 @@
-<div class="project-container">
+<div class="element-container">
 
     @forelse ($projects as $project)
         <a href="{{ route('projects.project', $project->id) }}" class="project-item">
