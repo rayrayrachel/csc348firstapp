@@ -28,6 +28,9 @@ class CreateProject extends Component
         'project_link' => 'nullable|url|max:255',
     ];
 
+    protected $messages = [
+        'featureimage.max' => 'The image size cannot be greater than 1024 kilobytes (1MB).', // Custom message for image size limit
+    ];
 
     public function createProject()
     {

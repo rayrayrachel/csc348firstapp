@@ -16,7 +16,7 @@
                             @if ($project->featureimage)
                                 <img src="{{ asset('storage/' . $project->featureimage) }}" alt="Feature image of {{ $project->title }}" class="project-image">
                             @else
-                                <img src="{{ asset('images/default-image.png') }}" alt="Default project image" class="project-image">
+                                <img src="{{ asset('images/default-image.gif') }}" alt="Default project image" class="project-image">
                             @endif
                         </div>
 

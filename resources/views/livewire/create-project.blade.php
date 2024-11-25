@@ -7,7 +7,7 @@
 
     <form wire:submit.prevent="createProject" class="create-project-form">
         <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">Title <span class="text-red-500">*</span></label>
             <input type="text" id="title" wire:model="title" placeholder="Enter project title" />
             @error('title')
                 <span class="text-red-500">{{ $message }}</span>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-group">
-            <label for="description">Description</label>
+            <label for="description">Description <span class="text-red-500">*</span></label>
             <textarea id="description" wire:model="description" placeholder="Enter project description"></textarea>
             @error('description')
                 <span class="text-red-500">{{ $message }}</span>

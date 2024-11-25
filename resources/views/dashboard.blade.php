@@ -12,29 +12,23 @@
 
     @section('content')
         <div class="page-container">
-
-
-
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-
-                <div class="flex space-x-4">
-
+                <div class="flex space-x-2">
                     <div id="projectList" class="w-full  transition-all">
-                        <div class="py-3">
 
-                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                <div class="p-6 text-gray-900">
-                                    <section>
-                                        <h2>Stats</h2>
-                                        <p>Total Projects: {{ $stats['total_projects'] }}</p>
-                                    </section>
-                                </div>
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                            <div class="p-6 text-gray-900">
+                                <section>
+                                    <h2>Stats</h2>
+                                    <p>Total Projects: {{ $stats['total_projects'] }}</p>
+                                </section>
                             </div>
                         </div>
-                        @livewire('project-list', ['authOnly' => true])
-                    </div>
+                        <div class="py-3">
 
+                            @livewire('project-list', ['authOnly' => true])
+                        </div>
+                    </div>
                     <div id="createProjectForm" class=" hidden transition-all">
                         @livewire('create-project')
                     </div>

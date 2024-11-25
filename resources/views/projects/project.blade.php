@@ -14,8 +14,7 @@
                     <img src="{{ asset('storage/' . $project->featureimage) }}" alt="Feature image of {{ $project->title }}"
                       >
                 @else
-                    <img src="{{ asset('images/default-image.png') }}" alt="Default project image" >
-                @endif
+@endif
 
 
                 <p class="text-description">Methodology Used: {{ $project->methodology_used }}</p>
