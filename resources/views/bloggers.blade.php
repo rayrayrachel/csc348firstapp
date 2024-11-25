@@ -6,7 +6,7 @@
     </x-slot>
 
     @section('content')
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        {{-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="blogger-list">
                 @foreach ($bloggers as $blogger)
                     <a href="{{ route('bloggers.profile', $blogger->id) }}" class="block">
@@ -21,6 +21,9 @@
                     </a>
                 @endforeach
             </div>
+        </div> --}}
+
+        @livewire('blogger-list')
         </div>
     @endsection
 </x-app-layout>

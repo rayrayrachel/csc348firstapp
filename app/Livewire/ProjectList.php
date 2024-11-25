@@ -4,45 +4,42 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use App\Models\Project;
+use Livewire\WithPagination;
 
 class ProjectList extends Component
 {
-    public $userId; 
-    public $authOnly = false; 
-    public $projects;
-    public $currentUser;
+    use WithPagination;
 
+    public $authOnly = false;
+    public $userId = null;
 
-    protected $listeners = ['projectCreated' => 'loadProjects'];
-    
-    public function mount($userId = null, $authOnly = false)
-    {
-        $this->userId = $userId;
-        $this->authOnly = $authOnly;
-        $this->currentUser = Auth::id();
-    }
+    protected $listeners = ['projectCreated' => '$refresh'];
 
     public function loadProjects()
     {
+        $perPage = 5;
+        $currentUser = Auth::id();
 
         if ($this->authOnly) {
-            $this->projects = Project::where('user_id', $this->currentUser)->latest()->get();
-        }
-
-        elseif ($this->userId) {
-            $this->projects = Project::where('user_id', $this->userId)->latest()->get();
-        }
-
-        else {
-            $this->projects = Project::with('user')->latest()->get();
+            return Project::where('user_id', $currentUser)
+                ->latest()
+                ->paginate($perPage);
+        } elseif ($this->userId) {
+            return Project::where('user_id', $this->userId)
+                ->latest()
+                ->paginate($perPage);
+        } else {
+            return Project::with('user')
+                ->latest()
+                ->paginate($perPage);
         }
     }
 
     public function render()
     {
-        $this->loadProjects();
-        return view('livewire.project-list');
+        $projects = $this->loadProjects();
+
+        return view('livewire.project-list', compact('projects'));
     }
 }
