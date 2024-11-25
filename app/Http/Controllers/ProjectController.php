@@ -11,8 +11,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with('user')->get();
-        return view('projects.index',['projects'=>$projects]);
+        $projects = Project::with('user')->orderBy('created_at', 'desc')->get(); // Add ordering here
+        return view('projects.index', ['projects' => $projects]);
     }
 
 // app/Http/Controllers/ProjectController.php

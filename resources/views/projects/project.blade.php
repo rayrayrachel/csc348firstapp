@@ -9,12 +9,14 @@
             <div class="card">
                 <h3 class="title">{{ $project->title }}</h3>
                 <p class="text-description">Description: {{ $project->description }}</p>
-                
+
                 @if ($project->featureimage)
-                    <div class="image-container">
-                        <img src="{{ $project->featureimage }}" alt="Project Image" class="feature-image">
-                    </div>
+                    <img src="{{ asset('storage/' . $project->featureimage) }}" alt="Feature image of {{ $project->title }}"
+                      >
+                @else
+                    <img src="{{ asset('images/default-image.png') }}" alt="Default project image" >
                 @endif
+
 
                 <p class="text-description">Methodology Used: {{ $project->methodology_used }}</p>
                 <p class="timestamp">Created At: {{ $project->created_at->format('M d, Y') }}</p>
