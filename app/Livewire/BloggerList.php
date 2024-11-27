@@ -13,7 +13,7 @@ class BloggerList extends Component
     public function render()
     {
         $perPage = 10;
-        $bloggers = BloggerProfile::paginate($perPage); 
+        $bloggers = BloggerProfile::orderBy('created_at', 'desc')->paginate($perPage);
         return view('livewire.blogger-list', compact('bloggers'));
     }
 }

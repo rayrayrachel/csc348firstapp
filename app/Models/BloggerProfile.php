@@ -13,6 +13,7 @@ class BloggerProfile extends Model
         'user_name',   
         'bio',
         'website',
+        'profile_picture',
         'location',
         'date_of_birth'
     ];

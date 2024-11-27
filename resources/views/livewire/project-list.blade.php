@@ -21,7 +21,6 @@
                                 class="project-image">
                         @endif
                     </div>
-
                 </div>
             </div>
         </a>
@@ -29,7 +28,7 @@
     @empty
         <p class="no-projects">No projects available.</p>
     @endforelse
-        <div class="pagination">
-            {{ $projects->links() }}
-        </div>
+    <div class="pagination">
+        {{ $projects->links() }}
+    </div>
 </div>
