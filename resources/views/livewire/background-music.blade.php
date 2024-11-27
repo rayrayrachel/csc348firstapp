@@ -7,12 +7,5 @@
     <script>
         const music = document.getElementById('background-music');
 
-        music.currentTime = @js($currentTime);
-
-        setInterval(() => {
-            if (!music.paused) {
-                Livewire.emit('updateTime', music.currentTime);
-            }
-        }, 1000);
     </script>
 </div>
