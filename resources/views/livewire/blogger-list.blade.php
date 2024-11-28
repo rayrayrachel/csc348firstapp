@@ -1,4 +1,4 @@
-<div class="element-container">
+<div>
 
     @foreach ($bloggers as $blogger)
         <a href="{{ route('bloggers.profile', $blogger->id) }}" class="block">

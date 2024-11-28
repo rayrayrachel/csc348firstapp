@@ -42,7 +42,7 @@
             </div>
         </div> --}}
         <div class="page-container">
-        <div class="container">
+        <div class="element-container">
             @livewire('project-list')
         </div>
         </div>

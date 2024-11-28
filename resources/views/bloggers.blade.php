@@ -23,8 +23,9 @@
                 @endforeach
             </div>
         </div> --}}
-
-            @livewire('blogger-list')
+            <div class="element-container ">
+                @livewire('blogger-list')
+            </div>
         </div>
     @endsection
 

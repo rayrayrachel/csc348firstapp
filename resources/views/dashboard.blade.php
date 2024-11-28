@@ -1,48 +1,55 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center ">
-            <h2 class="page-header">
-                {{ __('Dashboard') }}
-            </h2>
-            <button id="toggleButton" onclick="toggleForm()" class="create-project-btn bg-[#36c73b]">
-                Create Project
-            </button>
-        </div>
+        <h2 class="page-header">
+            {{ __('Dashboard') }}
+        </h2>
     </x-slot>
 
     @section('content')
         <div class="page-container">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex space-x-2">
-                    <div id="projectList" class="w-full  transition-all">
+            <div class="element-container">
+                <livewire:display-blogger-profile />
+            </div>
 
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6 text-gray-900">
-                                <livewire:statistics />
-                            </div>
-                        </div>
-                        <div class="py-3">
-                            @livewire('project-list', ['authOnly' => true])
-                        </div>
+            <div class="element-container">
+                <livewire:statistics />
+            </div>
+            <div class="element-container">
+
+                <div class="flex justify-between items-center ">
+                    <h2>{{ __('Project List') }}</h2>
+                    <button id="toggleButton" onclick="toggleCreateProjectForm()" class="create-project-btn bg-[#36c73b]">
+                        Create Project
+                    </button>
+                </div>
+
+                <div class="flex">
+                    <div id="projectList" class="w-full  transition-all">
+                        @livewire('project-list', ['authOnly' => true])
                     </div>
+
                     <div id="createProjectForm" class=" hidden transition-all">
-                        @livewire('create-project')
+
+                        <div class="element-container">
+                            @livewire('create-project')
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     @endsection
 </x-app-layout>
 
 <script>
-    function toggleForm() {
+    function toggleCreateProjectForm() {
         const form = document.getElementById("createProjectForm");
         const button = document.getElementById("toggleButton");
         const projectList = document.getElementById("projectList");
 
         if (form.style.display === "none" || form.style.display === "") {
             form.style.display = "block";
-            button.textContent = "Close Form";
+            button.textContent = "Close Project Form";
             projectList.classList.add("lg:w-2/3");
             button.classList.remove("bg-[#36c73b]");
             button.classList.add("bg-gray-300");
