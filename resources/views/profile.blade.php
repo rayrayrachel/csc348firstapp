@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    @section('content')
+
         <div class="blogger-container">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="blogger-profile">
@@ -30,5 +30,5 @@
                 </div>
             </div>
         </div>
-    @endsection
+
 </x-app-layout>

@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    @section('content')
+
         <div class="page-container">
             {{-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="blogger-list">
@@ -27,6 +27,6 @@
                 @livewire('blogger-list')
             </div>
         </div>
-    @endsection
+
 
 </x-app-layout>

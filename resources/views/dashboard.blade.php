@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    @section('content')
+
         <div class="page-container">
             <div class="element-container">
                 <livewire:display-blogger-profile />
@@ -38,7 +38,7 @@
             </div>
 
         </div>
-    @endsection
+
 </x-app-layout>
 
 <script>

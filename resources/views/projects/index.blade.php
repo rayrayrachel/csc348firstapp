@@ -5,7 +5,6 @@
         </h2>
     </x-slot>
 
-    @section('content')
         {{-- <div class="page-container">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="space-y-6">
@@ -46,5 +45,5 @@
                 @livewire('project-list', ['context' => 'all-projects'])
             </div>
         </div>
-    @endsection
+
 </x-app-layout>
