@@ -61,4 +61,5 @@
             button.classList.add("bg-[#36c73b]");
         }
     }
+
 </script>

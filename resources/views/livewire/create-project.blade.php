@@ -5,7 +5,7 @@
         </div>
     @endif
 
-    <form wire:submit.prevent="createProject" class="my-form-style">
+    <form wire:submit.prevent="createProject">
         <div class="form-group">
             <label for="title">Title <span class="text-red-500">*</span></label>
             <input type="text" id="title" wire:model="title" placeholder="Enter project title" />

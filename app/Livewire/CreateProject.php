@@ -54,11 +54,12 @@ class CreateProject extends Component
             'project_link' => $this->project_link,
         ]);
 
-        $this->dispatch('projectCreated'); 
+        $this->dispatch('projectCreated');
 
         $this->reset();
-
+        
         session()->flash('message', 'Project created successfully!');
+
     }
 
     public function render()

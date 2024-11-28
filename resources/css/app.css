@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-h2{
+h2 {
     font-size: 2rem;
     color: #2d3748;
 }
@@ -16,12 +16,15 @@ h2{
 
 .page-container {
     padding: 1.5rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .element-container {
     padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     background-color: #ffffff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border-radius: 0.375rem;
@@ -252,7 +255,7 @@ span.text-red-500 {
     height: 100%;
     object-fit: cover;
     border-radius: 5rem;
-background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 /*Display Blogger Information*/
@@ -271,7 +274,7 @@ background-color: #ffffff;
 .blogger-information-profile-picture {
     width: 150px;
     height: 150px;
-object-fit: cover;
+    object-fit: cover;
     border-radius: 50%;
     border: 2px solid #ddd;
 }
@@ -292,17 +295,18 @@ object-fit: cover;
     margin: 5px;
 }
 
-.pagination p{
-        margin: 5px;
+.pagination p {
+    margin: 5px;
 }
 
-.pagination button{
+.pagination button {
     background-color: white;
 }
 
-.pagination a{
-        background-color: #36c73b;
+.pagination a {
+    background-color: #36c73b;
 }
+
 .pagination span {
     border-radius: 5px;
     font-size: 14px;
@@ -326,9 +330,10 @@ object-fit: cover;
     border-color: #1e7e34;
 }
 
-.pagination .button.relative.inline-flex.items-center{
-        background-color: #36c73b;
+.pagination .button.relative.inline-flex.items-center {
+    background-color: #36c73b;
 }
+
 .pagination .relative.inline-flex.items-center {
     background-color: white;
 }
