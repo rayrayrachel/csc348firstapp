@@ -16,7 +16,23 @@ class ProjectList extends Component
 
     protected $listeners = ['projectCreated' => '$refresh'];
 
-    public function loadProjects()
+    public $context = null;
+
+    public function mount($context = null)
+    {
+        $this->context = $context;
+    }
+    public function updatingPage()
+    {
+        if ($this->context === 'dashboard') {
+            $this->dispatch('preserveScroll');
+            logger('updatingPage triggered for dashboard project list');
+        } elseif ($this->context === 'other-bloggers-projects') {
+            $this->dispatch('preserveScrollOtherUserProjectList');
+            logger('updatingPage triggered for other bloggers project list');
+        }
+    }
+    public function loadProjects($context = null)
     {
         $perPage = 5;
         $currentUser = Auth::id();

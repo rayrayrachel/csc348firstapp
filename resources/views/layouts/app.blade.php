@@ -46,3 +46,20 @@
 </body>
 
 </html>
+
+<script>
+    Livewire.on('preserveScroll', () => {
+        console.log('preserveScroll event received');
+        window.scrollTo({
+            top: 550,
+        });
+    });
+
+        Livewire.on('preserveScrollOtherUserProjectList', () => {
+        console.log('preserveScroll event received from other user project list');
+        window.scrollTo({
+            top: 200,
+        });
+    });
+
+</script>

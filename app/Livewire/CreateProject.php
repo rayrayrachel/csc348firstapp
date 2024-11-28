@@ -29,7 +29,7 @@ class CreateProject extends Component
     ];
 
     protected $messages = [
-        'featureimage.max' => 'The image size cannot be greater than 1024 kilobytes (1MB).', // Custom message for image size limit
+        'featureimage.max' => 'The image size cannot be greater than 1024 kilobytes (1MB).',
     ];
 
     public function createProject()
@@ -42,6 +42,7 @@ class CreateProject extends Component
         } else {
             $imagePath = null;
         }
+        
 
         Project::create([
             'user_id' => Auth::id(),

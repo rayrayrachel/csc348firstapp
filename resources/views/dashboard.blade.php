@@ -25,7 +25,7 @@
 
                 <div class="flex">
                     <div id="projectList" class="w-full  transition-all">
-                        @livewire('project-list', ['authOnly' => true])
+                        @livewire('project-list', ['authOnly' => true, 'context' => 'dashboard'])
                     </div>
 
                     <div id="createProjectForm" class=" hidden transition-all">

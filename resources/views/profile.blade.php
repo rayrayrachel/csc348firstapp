@@ -19,7 +19,7 @@
                             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                                 <p>These are the projects done by {{ $profile->user_name }}.</p>
                                 <div class="container">
-                                    @livewire('project-list', ['userId' => $profile->user_id])
+                                    @livewire('project-list', ['userId' => $profile->user_id, 'context' => 'other-bloggers-projects'])
                                 </div>
                             </div>
                         </div>

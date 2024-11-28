@@ -42,9 +42,9 @@
             </div>
         </div> --}}
         <div class="page-container">
-        <div class="element-container">
-            @livewire('project-list')
-        </div>
+            <div class="element-container">
+                @livewire('project-list', ['context' => 'all-projects'])
+            </div>
         </div>
     @endsection
 </x-app-layout>
