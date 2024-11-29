@@ -299,6 +299,21 @@ span.text-red-500 {
     color: #333;
 }
 
+/*Update Blogger Pfp*/
+
+.update-blogger-information-profile-picture-container {
+    flex-shrink: 0;
+}
+
+.update-blogger-information-profile-picture {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    margin-bottom: 10px;
+}
+
 /*Comment*/
 .comment-container {
     display: flex;

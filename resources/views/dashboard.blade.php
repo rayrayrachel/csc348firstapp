@@ -7,6 +7,7 @@
 
 
     <div class="page-container">
+
         <div class="element-container">
             <livewire:display-blogger-profile />
         </div>

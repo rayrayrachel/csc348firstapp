@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-        <div class="py-12">
+        {{-- <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <section>
 
@@ -67,6 +67,9 @@
                     </form>
                 </section>
             </div>
-        </div>
+        </div> --}}
 
+        <div class="element-container">
+                    <livewire:blogger-profile-form />
+        </div>
 </x-app-layout>
