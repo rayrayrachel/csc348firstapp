@@ -38,6 +38,7 @@
             </div>
 
             <div id="commentDiv" class="hidden">
+                                    <h2>{{ __('Comment List') }}</h2>
                 @livewire('comments-display', ['userId' => Auth::id()])
             </div>
 

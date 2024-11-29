@@ -17,7 +17,7 @@ class ProjectFactory extends Factory
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'status' => $this->faker->randomElement(['ongoing', 'completed', 'pending']),
-            'featureimage' => $this->faker->imageUrl(640, 480, 'projects', true),
+//            'featureimage' => $this->faker->imageUrl(640, 480, 'projects', true),
             'methodology_used' => $this->faker->word(),
             'project_link' => $this->faker->url(),
         ];

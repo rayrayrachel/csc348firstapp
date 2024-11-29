@@ -1,6 +1,6 @@
 <div>
     @if ($comments->isEmpty())
-        <p>No comments yet. Be the first to comment!</p>
+        <p>No comments yet.</p>
     @else
         <ul>
             @foreach ($comments as $comment)
