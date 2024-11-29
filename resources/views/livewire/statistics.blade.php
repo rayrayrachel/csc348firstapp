@@ -1,5 +1,5 @@
 <div>
-        <h2>{{ __('Statistics') }}</h2>
+    <h2>{{ __('Statistics') }}</h2>
     <div class="statistics">
         <div class="stat-card">
             <h3>Total Projects</h3>

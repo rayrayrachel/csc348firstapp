@@ -10,12 +10,12 @@ class Comment extends Model
 {
     use HasFactory;
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function projects()
+    public function project()
     {
         return $this->belongsTo(Project::class);
     }
