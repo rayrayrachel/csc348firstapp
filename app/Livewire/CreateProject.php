@@ -31,6 +31,7 @@ class CreateProject extends Component
     protected $messages = [
         'featureimage.max' => 'The image size cannot be greater than 1024 kilobytes (1MB).',
     ];
+    
 
     public function createProject()
     {
@@ -54,7 +55,7 @@ class CreateProject extends Component
             'project_link' => $this->project_link,
         ]);
 
-        $this->dispatch('projectCreated');
+        $this->dispatch('submitClicked');
 
         $this->reset();
         

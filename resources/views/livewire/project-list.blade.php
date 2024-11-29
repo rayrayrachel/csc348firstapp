@@ -8,7 +8,7 @@
                         <h3 class="project-title">{{ $project->title }}</h3>
                         <p class="project-info">Blogger: {{ $project->user->name ?? 'Unknown User' }}</p>
                         <p class="project-info">Description: {{ $project->description }}</p>
-                        <p class="project-info">Created At: {{ $project->created_at->format('M d, Y, h:i A') }}</p>
+                        <p class="project-info">Created At: {{ $project->created_at->diffForHumans()}}</p>
                     </div>
 
                     <div class="project-image-container">

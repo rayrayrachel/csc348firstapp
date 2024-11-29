@@ -1,11 +1,12 @@
 <div>
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
-
     <form wire:submit.prevent="createProject">
+
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+
         <div class="form-group">
             <label for="title">Title <span class="text-red-500">*</span></label>
             <input type="text" id="title" wire:model="title" placeholder="Enter project title" />
@@ -40,7 +41,8 @@
             @if ($featureimage)
                 <div>
                     <label>Preview:</label>
-                    <img src="{{ $featureimage->temporaryUrl() }}" alt="Image Preview" style="max-width: 100%; height: auto; border: 1px solid #ccc;" />
+                    <img src="{{ $featureimage->temporaryUrl() }}" alt="Image Preview"
+                        style="max-width: 100%; height: auto; border: 1px solid #ccc;" />
                 </div>
             @endif
         </div>

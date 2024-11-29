@@ -27,7 +27,7 @@
             </p>
             <p><strong>{{ __('Location:') }}</strong> {{ $bloggerProfile->location ?? 'Not provided' }}</p>
             <p><strong>{{ __('Date of Birth:') }}</strong> {{ $bloggerProfile->date_of_birth ?? 'Not provided' }}</p>
-            <p><strong>{{ __('Account Created:') }}</strong> {{ $bloggerProfile->created_at->format('d-m-Y') ?? 'Not provided' }}</p>
+            <p><strong>{{ __('Account Created:') }}</strong> {{ $bloggerProfile->created_at->diffForHumans() ?? 'Not provided' }}</p>
         </div>
     </div>
 </div>

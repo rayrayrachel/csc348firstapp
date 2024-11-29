@@ -14,7 +14,7 @@ class ProjectList extends Component
     public $authOnly = false;
     public $userId = null;
 
-    protected $listeners = ['projectCreated' => '$refresh'];
+    protected $listeners = ['submitClicked' => '$refresh'];
 
     public $context = null;
 

@@ -1,11 +1,10 @@
 <div>
-  <h2>{{ __('Comments') }}</h2>
 
-    @if($comments->isEmpty())
+    @if ($comments->isEmpty())
         <p>No comments yet. Be the first to comment!</p>
     @else
         <ul>
-            @foreach($comments as $comment)
+            @foreach ($comments as $comment)
                 <li class="comment-container">
                     <p><strong>{{ $comment->user->name }}</strong> says:</p>
                     <p>{{ $comment->content }}</p>
@@ -13,5 +12,8 @@
                 </li>
             @endforeach
         </ul>
+        <div class="pagination">
+            {{ $comments->links() }}
+        </div>
     @endif
 </div>

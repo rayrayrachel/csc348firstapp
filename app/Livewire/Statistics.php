@@ -13,7 +13,7 @@ class Statistics extends Component
     public $totalProjects;
     public $totalComments;
 
-    protected $listeners = ['projectCreated' => 'mount'];
+    protected $listeners = ['submitClicked' => 'mount'];
 
     public function mount()
     {
