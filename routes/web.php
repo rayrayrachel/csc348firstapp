@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\ProjectDetails;
+use App\Livewire\Projects;
 
 
 use App\Http\Controllers\ProfileController;
@@ -20,7 +21,7 @@ Route::prefix('bloggers')->group(function () {
 });
 
 
-Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
+// Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
 
 
 Route::middleware('auth')->group(function () {
@@ -28,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/dashboard/projects', [ProjectController::class, 'userProjects'])->name('projects.user');
+   // Route::get('/dashboard/projects', [ProjectController::class, 'userProjects'])->name('projects.user');
 });
 
 Route::middleware(['auth'])->prefix('blogger/profile')->group(function () {
@@ -40,6 +41,7 @@ Route::middleware(['auth'])->prefix('blogger/profile')->group(function () {
 
 
 
+Route::get('/projects', Projects::class)->name('projects');
 
 Route::get('/projects/{project}', ProjectDetails::class)->name('project.details');
 

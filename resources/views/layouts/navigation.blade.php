@@ -25,7 +25,12 @@
                             <x-nav-link :href="route('projects')" :active="request()->routeIs('projects')">
                                 {{ __('Projects') }}
                             </x-nav-link>
+                            
                         </div>
+                    </div>
+
+                    <div wire:loading>
+                        <p>Loading...</p>
                     </div>
 
                     <!-- Settings Dropdown -->

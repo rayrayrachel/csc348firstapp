@@ -17,6 +17,8 @@
 
     <!-- Livewire Styles -->
     @livewireStyles
+
+
 </head>
 
 <body class="font-sans antialiased">
@@ -34,7 +36,7 @@
 
         <!-- Page Content -->
         <main>
-            {{ $slot }} 
+            {{ $slot }}
         </main>
     </div>
 

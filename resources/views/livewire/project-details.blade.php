@@ -50,9 +50,7 @@
                     </div>
 
                     <div id="createCommentForm"class=" w-1/3 h-max hidden transition-all">
-
                         @livewire('create-comment', ['projectId' => $project->id])
-
                     </div>
                 </div>
             </div>
