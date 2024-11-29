@@ -1,6 +1,6 @@
 <div>
 
-    <h2>{{ __('Blogger Profile Information') }}</h2>
+    <h2>{{ $bloggerProfile->user_name }} {{ __('\'s Information') }}</h2>
 
 
     <div class="blogger-information-profile-container">

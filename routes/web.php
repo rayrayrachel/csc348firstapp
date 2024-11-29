@@ -2,7 +2,8 @@
 
 use App\Livewire\ProjectDetails;
 use App\Livewire\Projects;
-
+use App\Livewire\BloggerList;
+use App\Livewire\BloggerDetails;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('bloggers')->group(function () {
-    Route::get('/', [BloggerController::class, 'index'])->name('bloggers');
-    Route::get('/{profile}', [BloggerController::class, 'show'])->name('bloggers.profile');
-});
+// Route::prefix('bloggers')->group(function () {
+//     Route::get('/', [BloggerController::class, 'index'])->name('bloggers');
+//     Route::get('/{profile}', [BloggerController::class, 'show'])->name('bloggers.profile');
+// });
 
 
 // Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
@@ -42,7 +43,9 @@ Route::middleware(['auth'])->prefix('blogger/profile')->group(function () {
 
 
 Route::get('/projects', Projects::class)->name('projects');
-
 Route::get('/projects/{project}', ProjectDetails::class)->name('project.details');
 
+
+Route::get('/bloggers', BloggerList::class)->name('bloggers');
+Route::get('/bloggers/{id}', BloggerDetails::class)->name('bloggers.profile');
 require __DIR__.'/auth.php';
