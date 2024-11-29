@@ -12,28 +12,35 @@
         </div>
 
         <div class="element-container">
-            <livewire:statistics />
+            @livewire('statistics')
         </div>
         <div class="element-container">
 
-            <div class="flex justify-between items-center ">
-                <h2>{{ __('Project List') }}</h2>
-                <button id="toggleButton" onclick="toggleCreateProjectForm()" class="create-project-btn bg-[#36c73b]">
-                    Create Project
-                </button>
-            </div>
-
-            <div class="flex">
-                <div id="projectList" class="w-full  transition-all">
-                    @livewire('project-list', ['authOnly' => true, 'context' => 'dashboard'])
+            <div id="projectDiv">
+                <div class="flex justify-between items-center ">
+                    <h2>{{ __('Project List') }}</h2>
+                    <button id="toggleButton" onclick="toggleCreateProjectForm()" class="create-project-btn bg-[#36c73b]">
+                        Create Project
+                    </button>
                 </div>
 
-                <div id="createProjectForm" class=" hidden transition-all">
-                    <div class="element-container">
-                        @livewire('create-project')
+                <div class="flex">
+                    <div id="projectList" class="w-full  transition-all">
+                        @livewire('project-list', ['authOnly' => true, 'context' => 'dashboard'])
+                    </div>
+
+                    <div id="createProjectForm" class=" hidden transition-all">
+                        <div class="element-container">
+                            @livewire('create-project')
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div id="commentDiv" class=" hidden">
+                <h2>hello</h2>
+            </div>
+
         </div>
 
     </div>
@@ -41,6 +48,23 @@
 </x-app-layout>
 
 <script>
+    Livewire.on('projectsClicked', () => {
+        const projectDiv = document.getElementById("projectDiv");
+        const commentDiv = document.getElementById("commentDiv");
+
+        projectDiv.style.display = "";
+        commentDiv.style.display = "none";
+    });
+
+    Livewire.on('commentsClicked', () => {
+        const projectDiv = document.getElementById("projectDiv");
+        const commentDiv = document.getElementById("commentDiv");
+
+        commentDiv.style.display = "";
+        projectDiv.style.display = "none";
+        commentDiv.classList.remove("hidden");
+    });
+
     function toggleCreateProjectForm() {
         const form = document.getElementById("createProjectForm");
         const button = document.getElementById("toggleButton");

@@ -22,7 +22,19 @@ class Statistics extends Component
         $comments = $user->comments;
 
         $this->totalProjects = $projects ->count();  
-        $this->totalComments = $comments ->count();  
+        $this->totalComments = $comments ->count();
+
+    }
+
+
+    public function handleProjectsClick()
+    {
+        $this->dispatch('projectsClicked');
+    }
+
+    public function handleCommentsClick()
+    {
+        $this->dispatch('commentsClicked'); 
     }
 
     public function render()
