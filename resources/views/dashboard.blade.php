@@ -37,8 +37,8 @@
                 </div>
             </div>
 
-            <div id="commentDiv" class=" hidden">
-                <h2>hello</h2>
+            <div id="commentDiv" class="hidden">
+                @livewire('comments-display', ['userId' => Auth::id()])
             </div>
 
         </div>

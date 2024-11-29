@@ -10,7 +10,7 @@
                             <img src="{{ asset('storage/' . $blogger->profile_picture) }}"
                                 alt="Profile picture of {{ $blogger->user_name }}" class="profile-picture">
                         @else
-                            <img src="{{ asset('images/default-image.gif') }}" alt="Default project image"
+                            <img src="{{ asset('images/default-pfp.gif') }}" alt="Default project image"
                                 class="profile-picture">
                         @endif
                     </div>
