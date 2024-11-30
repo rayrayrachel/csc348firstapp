@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout>
     <x-slot name="header">
         <h2 class="page-header">
             {{ __('Dashboard') }}
@@ -86,4 +86,7 @@
             button.classList.add("bg-[#36c73b]");
         }
     }
-</script>
+</script> --}}
+<div>
+    <livewire:dashboard />
+</div>

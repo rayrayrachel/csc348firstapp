@@ -8,29 +8,23 @@
                     <div class="flex">
                         <!-- Logo -->
                         <div class="shrink-0 flex items-center">
-                            <a href="{{ route('dashboard') }}">
+                            <a href="{{ route('dashboard') }}"  wire:navigate>
                                 <x-application-logo class="logo" />
                             </a>
-                            <a href="{{ route('bloggers') }}"></a>
                         </div>
 
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            <x-nav-link wire:navigate :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                 {{ __('Dashboard') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('bloggers')" :active="request()->routeIs('bloggers')">
+                            <x-nav-link wire:navigate :href="route('bloggers')" :active="request()->routeIs('bloggers')">
                                 {{ __('Bloggers') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('projects')" :active="request()->routeIs('projects')">
+                            <x-nav-link wire:navigate :href="route('projects')" :active="request()->routeIs('projects')">
                                 {{ __('Projects') }}
                             </x-nav-link>
-                            
                         </div>
-                    </div>
-
-                    <div wire:loading>
-                        <p>Loading...</p>
                     </div>
 
                     <!-- Settings Dropdown -->
@@ -53,11 +47,11 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('profile.edit')">
+                                <x-dropdown-link wire:navigate :href="route('profile.edit')">
                                     {{ __('User Profile') }}
                                 </x-dropdown-link>
 
-                                <x-dropdown-link :href="route('blogger.profile')">
+                                <x-dropdown-link wire:navigate :href="route('blogger.profile')">
                                     {{ __('Blogger Profile') }}
                                 </x-dropdown-link>
 
@@ -95,7 +89,7 @@
             <!-- Responsive Navigation Menu -->
             <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-responsive-nav-link wire:navigate :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-responsive-nav-link>
                 </div>

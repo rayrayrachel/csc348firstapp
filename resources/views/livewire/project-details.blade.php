@@ -1,69 +1,68 @@
 <div>
-    <x-app-layout>
-        <x-slot name="header">
-            <h2 class="page-header">
-                {{ __('Project Details') }}
-            </h2>
-        </x-slot>
 
-        <div class="page-container">
+    <x-slot name="header">
+        <h2 class="page-header">
+            {{ __('Project Details') }}
+        </h2>
+    </x-slot>
 
-            <div class="element-container" id="projectDetailsContainer">
+    <div class="page-container">
 
-                @livewire('blogger-p-f-p', ['userId' => $project->user->id])
+        <div class="element-container" id="projectDetailsContainer">
 
-                <h2>{{ $project->title }}</h2>
-                <p class="text-description">Description: {{ $project->description }}</p>
+            @livewire('blogger-p-f-p', ['userId' => $project->user->id])
 
-                @if ($project->featureimage)
-                    <img src="{{ asset('storage/' . $project->featureimage) }}"
-                        alt="Feature image of {{ $project->title }}">
-                @endif
+            <h2>{{ $project->title }}</h2>
+            <p class="text-description">Description: {{ $project->description }}</p>
 
-                <p class="text-description">Methodology Used: {{ $project->methodology_used }}</p>
-                <p class="timestamp">Created At: {{ $project->created_at->diffForHumans() }}</p>
-                <p class="timestamp">Updated At: {{ $project->updated_at->diffForHumans() }}</p>
-                <p class="author">
-                    Author: {{ $project->user->name ?? 'Unknown User' }}
+            @if ($project->featureimage)
+                <img src="{{ asset('storage/' . $project->featureimage) }}" alt="Feature image of {{ $project->title }}">
+            @endif
+
+            <p class="text-description">Methodology Used: {{ $project->methodology_used }}</p>
+            <p class="timestamp">Created At: {{ $project->created_at->diffForHumans() }}</p>
+            <p class="timestamp">Updated At: {{ $project->updated_at->diffForHumans() }}</p>
+            <p class="author">
+                Author: {{ $project->user->name ?? 'Unknown User' }}
+            </p>
+
+            @if ($project->project_link)
+                <p class="link">External Link To This Project:
+                    <a href="{{ $project->project_link }}" target="_blank">
+                        {{ $project->project_link }}
+                    </a>
                 </p>
+            @endif
+        </div>
 
-                @if ($project->project_link)
-                    <p class="link">External Link To This Project:
-                        <a href="{{ $project->project_link }}" target="_blank">
-                            {{ $project->project_link }}
-                        </a>
-                    </p>
-                @endif
+
+        <div class="element-container">
+
+            <div class="flex justify-between items-center ">
+                <h2>{{ __('Comments') }}</h2>
+
+                @auth
+                    <button id="toggleCommentButton" onclick="toggleCreateCommentForm()"
+                        class="bg-[#36c73b] text-white py-2 px-4 rounded">
+                        Add Comment
+                    </button>
+                @endauth
+
             </div>
 
-
-            <div class="element-container">
-
-                <div class="flex justify-between items-center ">
-                    <h2>{{ __('Comments') }}</h2>
-
-                    @auth
-                        <button id="toggleCommentButton" onclick="toggleCreateCommentForm()"
-                            class="bg-[#36c73b] text-white py-2 px-4 rounded">
-                            Add Comment
-                        </button>
-                    @endauth
-
+            <div class="flex">
+                <div id="commentList" class="w-full  transition-all">
+                    @livewire('comments-display', ['projectId' => $project->id])
                 </div>
 
-                <div class="flex">
-                    <div id="commentList" class="w-full  transition-all">
-                        @livewire('comments-display', ['projectId' => $project->id])
-                    </div>
-
-                    <div id="createCommentForm"class=" w-1/3 h-max hidden transition-all">
-                        @livewire('create-comment', ['projectId' => $project->id])
-                    </div>
+                <div id="createCommentForm"class=" w-1/3 h-max hidden transition-all">
+                    @livewire('create-comment', ['projectId' => $project->id])
                 </div>
             </div>
         </div>
+    </div>
 
-    </x-app-layout>
+
 </div>
 
 <script>

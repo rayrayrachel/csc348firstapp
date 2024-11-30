@@ -25,6 +25,10 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
+        <!-- Livewire Scripts -->
+        @livewireScripts
+
+
         <!-- Page Heading -->
         @isset($header)
             <header class="bg-white shadow">
@@ -42,30 +46,28 @@
 
     <livewire:background-music />
 
-    <!-- Livewire Scripts -->
-    @livewireScripts
+
+    <script>
+        // Pagination when clicked, scroll view go back to the top of element, instead of page top
+        Livewire.on('preserveScroll', () => {
+            console.log('preserveScroll event received');
+            window.scrollTo({
+                top: 550,
+            });
+        });
+
+        Livewire.on('preserveScrollOtherUserProjectList', () => {
+            console.log('preserveScroll event received from other user project list');
+            window.scrollTo({
+                top: 200,
+            });
+        });
+
+        // Clear DOM cache for input and text view displayed
+        Livewire.on('submitClicked', () => {
+            document.querySelectorAll('form input, form textarea').forEach(field => field.value = '');
+        });
+    </script>
 </body>
 
 </html>
-
-<script>
-    // Pagination when clicked, scroll view go back to the top of element, instead of page top
-    Livewire.on('preserveScroll', () => {
-        console.log('preserveScroll event received');
-        window.scrollTo({
-            top: 550,
-        });
-    });
-
-    Livewire.on('preserveScrollOtherUserProjectList', () => {
-        console.log('preserveScroll event received from other user project list');
-        window.scrollTo({
-            top: 200,
-        });
-    });
-
-    // Clear DOM cache for input and text view displayed
-    Livewire.on('submitClicked', () => {
-        document.querySelectorAll('form input, form textarea').forEach(field => field.value = '');
-    });
-</script>

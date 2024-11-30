@@ -5,6 +5,7 @@ use App\Livewire\Projects;
 use App\Livewire\BloggerList;
 use App\Livewire\BloggerDetails;
 use App\Livewire\BloggerProfileForm;
+use App\Livewire\Dashboard;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -30,8 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-   // Route::get('/dashboard/projects', [ProjectController::class, 'userProjects'])->name('projects.user');
+    //  Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // Route::get('/dashboard/projects', [ProjectController::class, 'userProjects'])->name('projects.user');
 });
 
 // Route::middleware(['auth'])->prefix('blogger/profile')->group(function () {
@@ -47,6 +48,12 @@ Route::middleware(['auth'])->prefix('blogger/profile')->group(
     }
 );
 
+Route::middleware('auth')->group(
+    function () {
+        Route::get('/dashboard', Dashboard::class)->name('dashboard');
+    }
+);
+
 Route::get('/projects', Projects::class)->name('projects');
 Route::get('/projects/{project}', ProjectDetails::class)->name('project.details');
 
@@ -55,4 +62,4 @@ Route::get('/bloggers', BloggerList::class)->name('bloggers');
 Route::get('/bloggers/{id}', BloggerDetails::class)->name('bloggers.profile');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
