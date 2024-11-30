@@ -51,7 +51,7 @@
         Livewire.on('preserveScroll', () => {
             console.log('preserveScroll event received');
             window.scrollTo({
-                top: 600,
+                top: 550,
             });
         });
 

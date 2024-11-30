@@ -19,12 +19,15 @@
                         {{ $project->status }}
                     </div>
                 @endif
+
+            </div>
+            <div>
                 @if ($project->categories->isNotEmpty())
-                    <div>
+                    <div> Project Categories:
                         @foreach ($project->categories as $category)
-                            <div class="category">{{ $category->name }}</div>
+                            <span class="category">{{ $category->name }}</span>
                             @if (!$loop->last)
-                                <div> </div>
+                                <span> </span>
                             @endif
                         @endforeach
                     </div>
