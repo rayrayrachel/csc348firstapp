@@ -25,11 +25,17 @@
 
         <div class="form-group">
             <label for="status">Status</label>
-            <input type="text" id="status" wire:model="status" placeholder="Enter project status" />
+            <select id="status" wire:model="status" class="form-select" placeholder="Select project status">
+                <option value="">Select Status</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
             @error('status')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
+
 
         <div class="form-group">
             <label for="featureimage">Featured Image</label>

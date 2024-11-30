@@ -1,5 +1,4 @@
 <div>
-
     <x-slot name="header">
         <h2 class="page-header">
             {{ __('Project Details') }}
@@ -12,14 +11,39 @@
 
             @livewire('blogger-p-f-p', ['userId' => $project->user->id])
 
-            <h2>{{ $project->title }}</h2>
-            <p class="text-description">Description: {{ $project->description }}</p>
+            <div class="flex justify-between items-center overflow-hidden">
+                <h2 class="truncate max-w-[calc(100%-100px)]">{{ $project->title }}</h2>
+
+                @if ($project->status)
+                    <div class="project-status bg-gray-200 text-sm text-white px-3 py-1 rounded">
+                        {{ $project->status }}
+                    </div>
+                @endif
+                @if ($project->categories->isNotEmpty())
+                    <div>
+                        @foreach ($project->categories as $category)
+                            <div class="category">{{ $category->name }}</div>
+                            @if (!$loop->last)
+                                <div> </div>
+                            @endif
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+
+            <div class="overflow-hidden">
+                <p class="text-description break-words">{{ $project->description }}</p>
+            </div>
 
             @if ($project->featureimage)
-                <img src="{{ asset('storage/' . $project->featureimage) }}" alt="Feature image of {{ $project->title }}">
+                <img src="{{ asset('storage/' . $project->featureimage) }}"
+                    alt="Feature image of {{ $project->title }}">
             @endif
 
-            <p class="text-description">Methodology Used: {{ $project->methodology_used }}</p>
+            @if ($project->methodology_used)
+                <p class="text-description">Methodology Used: {{ $project->methodology_used }}</p>
+            @endif
+
             <p class="timestamp">Created At: {{ $project->created_at->diffForHumans() }}</p>
             <p class="timestamp">Updated At: {{ $project->updated_at->diffForHumans() }}</p>
             <p class="author">
@@ -34,7 +58,6 @@
                 </p>
             @endif
         </div>
-
 
         <div class="element-container">
 
@@ -55,14 +78,12 @@
                     @livewire('comments-display', ['projectId' => $project->id])
                 </div>
 
-                <div id="createCommentForm"class=" w-1/3 h-max hidden transition-all">
+                <div id="createCommentForm" class="w-1/3 h-max hidden transition-all">
                     @livewire('create-comment', ['projectId' => $project->id])
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
 
 <script>
@@ -72,7 +93,6 @@
         const commentList = document.getElementById("commentList");
         const commentsContainer = document.getElementById("commentsContainer");
 
-
         if (form.style.display === "none" || form.style.display === "") {
             form.style.display = "block";
             button.textContent = "Close Comment Form";
@@ -80,7 +100,6 @@
             button.classList.remove("bg-[#36c73b]");
             button.classList.add("bg-gray-300");
             commentsContainer.classList.add("min-h-[100rem]");
-
         } else {
             form.style.display = "none";
             button.textContent = "Add Comment";

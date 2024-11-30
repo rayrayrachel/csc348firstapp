@@ -25,12 +25,29 @@
                                 <p class="project-info">Created At: {{ $project->created_at->diffForHumans() }}</p>
                             </div>
                         </div>
+                        <div class="flex justify-between items-center">
+                            <h2>{{ $project->title }}</h2>
 
-                        <h3 class="project-title">{{ $project->title }}</h3>
+                            @if ($project->status)
+                                <div class="project-status">
+                                    {{ $project->status }}
+                                </div>
+                            @endif
+
+                        </div>
                         <p class="project-info">Description: {{ $project->description }}</p>
 
                     </div>
-
+                            @if ($project->categories->isNotEmpty())
+                                <div >
+                                    @foreach ($project->categories as $category)
+                                        <span class="category">{{ $category->name }}</span>
+                                        @if (!$loop->last)
+                                            <span> </span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endif
                     <div class="project-image-container">
                         @if ($project->featureimage)
                             <img src="{{ asset('storage/' . $project->featureimage) }}"

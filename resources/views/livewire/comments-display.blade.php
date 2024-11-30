@@ -20,7 +20,7 @@
                         </div>
                     </a>
                     <div class="comment-text">
-                        <p><strong>{{ $comment->user->name }}</strong> says:</p>
+                        <p><strong class="">{{ $comment->user->name }}</strong> says on project: <strong>{{ $comment->project->title }}</strong> </p>
                         <p>{{ $comment->content }}</p>
                         <small class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</small>
                     </div>

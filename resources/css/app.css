@@ -85,6 +85,24 @@ h3 {
     margin: 1rem;
 }
 
+.project-status {
+    background-color: #dddddd;
+    color: rgb(0, 0, 0);
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.category {
+    background-color: #fffb1d;
+    color: rgb(0, 0, 0);
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
 
 .project-content {
     display: flex;
@@ -369,8 +387,6 @@ span.text-red-500 {
 .blogger-name-container {
     display: flex;
     align-items: flex-start;
-
-
 }
 
 .pfp {
