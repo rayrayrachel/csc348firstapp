@@ -30,7 +30,8 @@ class CreateComment extends Component
             'content' => $this->content,
         ]);
 
-        $this->content = ''; 
+        $this->content = '';
+         
         session()->flash('message', 'Your comment has been added!');
 
         $this->dispatch('submitClicked');

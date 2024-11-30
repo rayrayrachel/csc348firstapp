@@ -66,6 +66,10 @@
         Livewire.on('projectCreated', () => {
             document.querySelectorAll('form input, form textarea').forEach(field => field.value = '');
         });
+
+        Livewire.on('submitClicked', () => {
+            document.querySelectorAll('form input, form textarea').forEach(field => field.value = '');
+        });
     </script>
 </body>
 
