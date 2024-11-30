@@ -36,9 +36,7 @@
 
                         </div>
                         <p class="project-info">Description: {{ $project->description }}</p>
-
-                    </div>
-                            @if ($project->categories->isNotEmpty())
+                       @if ($project->categories->isNotEmpty())
                                 <div >
                                     @foreach ($project->categories as $category)
                                         <span class="category">{{ $category->name }}</span>
@@ -48,6 +46,8 @@
                                     @endforeach
                                 </div>
                             @endif
+                    </div>
+     
                     <div class="project-image-container">
                         @if ($project->featureimage)
                             <img src="{{ asset('storage/' . $project->featureimage) }}"

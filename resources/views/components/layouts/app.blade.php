@@ -64,11 +64,11 @@
 
         // Clear DOM cache for input and text view displayed
         Livewire.on('projectCreated', () => {
-            document.querySelectorAll('form input, form textarea').forEach(field => field.value = '');
+            document.querySelectorAll('form input, form textarea, form select').forEach(field => field.value = '');
         });
 
         Livewire.on('submitClicked', () => {
-            document.querySelectorAll('form input, form textarea').forEach(field => field.value = '');
+            document.querySelectorAll('form input, form textarea, form select').forEach(field => field.value = '');
         });
     </script>
 </body>

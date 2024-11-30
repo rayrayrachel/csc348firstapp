@@ -11,8 +11,27 @@ class CategoryFactory extends Factory
 {
     public function definition(): array
     {
+
+        static $categories = [
+            'Technology',
+            'Healthcare',
+            'Education',
+            'Finance',
+            'Entertainment',
+            'Travel',
+            'Science',
+            'Art & Design',
+            'Marketing',
+            'Business',
+            'Sports',
+            'Environment',
+            'Music',
+            'Lifestyle',
+            'Real Estate',
+        ];
+
         return [
-            'name' => $this->faker->unique()->word(), 
+            'name' => $this->faker->unique()->randomElement($categories),
         ];
     }
 }
