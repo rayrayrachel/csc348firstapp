@@ -2,13 +2,33 @@
     @forelse ($projects as $project)
         <a href="{{ route('project.details', $project->id) }}" class="project-item">
             <div class="project-card">
+
                 <div class="project-content">
 
                     <div class="project-list-text-container">
+
+                        <div class="blogger-name-container">
+                            <div class="pfp">
+                                <div class="pfp-container">
+                                    @if ($project->user->bloggerProfile->profile_picture)
+                                        <img src="{{ asset('storage/' . $project->user->bloggerProfile->profile_picture) }}"
+                                            alt="{{ $project->user->name }}'s Profile Picture" class="pfp-container">
+                                    @else
+                                        <img src="{{ asset('images/default-pfp.gif') }}" alt="Default Profile Picture"
+                                            class="pfp-container">
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="blogger-details">
+                                <h3>{{ $project->user->name }}</h3>
+                                <p class="project-info">Created At: {{ $project->created_at->diffForHumans() }}</p>
+                            </div>
+                        </div>
+
                         <h3 class="project-title">{{ $project->title }}</h3>
-                        <p class="project-info">Blogger: {{ $project->user->name ?? 'Unknown User' }}</p>
                         <p class="project-info">Description: {{ $project->description }}</p>
-                        <p class="project-info">Created At: {{ $project->created_at->diffForHumans()}}</p>
+
                     </div>
 
                     <div class="project-image-container">

@@ -9,6 +9,9 @@
         <div class="page-container">
 
             <div class="element-container" id="projectDetailsContainer">
+
+                @livewire('blogger-p-f-p', ['userId' => $project->user->id])
+
                 <h2>{{ $project->title }}</h2>
                 <p class="text-description">Description: {{ $project->description }}</p>
 
@@ -21,7 +24,7 @@
                 <p class="timestamp">Created At: {{ $project->created_at->diffForHumans() }}</p>
                 <p class="timestamp">Updated At: {{ $project->updated_at->diffForHumans() }}</p>
                 <p class="author">
-                    Blogger: {{ $project->user->name ?? 'Unknown User' }}
+                    Author: {{ $project->user->name ?? 'Unknown User' }}
                 </p>
 
                 @if ($project->project_link)
@@ -38,10 +41,14 @@
 
                 <div class="flex justify-between items-center ">
                     <h2>{{ __('Comments') }}</h2>
-                    <button id="toggleCommentButton" onclick="toggleCreateCommentForm()"
-                        class="bg-[#36c73b] text-white py-2 px-4 rounded">
-                        Add Comment
-                    </button>
+
+                    @auth
+                        <button id="toggleCommentButton" onclick="toggleCreateCommentForm()"
+                            class="bg-[#36c73b] text-white py-2 px-4 rounded">
+                            Add Comment
+                        </button>
+                    @endauth
+
                 </div>
 
                 <div class="flex">
