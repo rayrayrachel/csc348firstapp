@@ -32,5 +32,10 @@ class Project extends Model
         return $this->belongsToMany(Category::class, 'category_project');
     }
 
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likable');
+    }
+
 
 }

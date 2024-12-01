@@ -26,4 +26,9 @@ class Comment extends Model
         return $this->belongsTo(Project::class);
     }
 
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likable');
+    }
+
 }
