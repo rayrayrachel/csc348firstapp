@@ -13,13 +13,16 @@
 
             <div class="flex justify-between items-center overflow-hidden">
                 <h2 class="truncate max-w-[calc(100%-100px)]">{{ $project->title }}</h2>
-
-                @if ($project->status)
-                    <div class="project-status bg-gray-200 text-sm text-white px-3 py-1 rounded">
-                        {{ $project->status }}
+                <div class="flex">
+                    @if ($project->status)
+                        <div class="project-status bg-gray-200 text-sm text-white px-3 py-1 rounded">
+                            {{ $project->status }}
+                        </div>
+                    @endif
+                    <div class="px-3 ">
+                        @livewire('like-button', ['likeable' => $project],key('like-button-' . $project->id))
                     </div>
-                @endif
-
+                </div>
             </div>
             <div>
                 @if ($project->categories->isNotEmpty())
@@ -102,7 +105,6 @@
             commentList.classList.add("lg:w-2/3");
             button.classList.remove("bg-[#36c73b]");
             button.classList.add("bg-gray-300");
-            commentsContainer.classList.add("min-h-[100rem]");
         } else {
             form.style.display = "none";
             button.textContent = "Add Comment";

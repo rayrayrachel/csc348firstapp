@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 
 class BloggerList extends Component
 {
-
+    protected $listeners = ['submitClicked' => '$refresh'];
     use WithPagination;
     public function render()
     {
