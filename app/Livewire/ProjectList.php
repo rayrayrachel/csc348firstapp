@@ -27,6 +27,7 @@ class ProjectList extends Component
         if ($this->context === 'dashboard') {
             $this->dispatch('preserveScroll');
             logger('updatingPage triggered for dashboard project list');
+
         } elseif ($this->context === 'other-bloggers-projects') {
             $this->dispatch('preserveScrollOtherUserProjectList');
             logger('updatingPage triggered for other bloggers project list');
@@ -37,17 +38,21 @@ class ProjectList extends Component
         $perPage = 5;
         $currentUser = Auth::id();
 
+        
         if ($this->authOnly) {
             return Project::where('user_id', $currentUser)
                 ->latest()
+                ->withCount('likes')
                 ->paginate($perPage);
         } elseif ($this->userId) {
             return Project::where('user_id', $this->userId)
                 ->latest()
+                ->withCount('likes')
                 ->paginate($perPage);
         } else {
             return Project::with('user')
                 ->latest()
+                ->withCount('likes')
                 ->paginate($perPage);
         }
     }

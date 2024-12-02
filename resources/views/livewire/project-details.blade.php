@@ -26,7 +26,7 @@
             </div>
             <div>
                 @if ($project->categories->isNotEmpty())
-                    <div> Project Categories:
+                    <div class="py-3"> Project Categories:
                         @foreach ($project->categories as $category)
                             <span class="category">{{ $category->name }}</span>
                             @if (!$loop->last)
@@ -38,7 +38,7 @@
             </div>
 
             <div class="overflow-hidden">
-                <p class="text-description break-words">{{ $project->description }}</p>
+                <p >{{ $project->description }}</p>
             </div>
 
             @if ($project->featureimage)
@@ -50,11 +50,9 @@
                 <p class="text-description">Methodology Used: {{ $project->methodology_used }}</p>
             @endif
 
-            <p class="timestamp">Created At: {{ $project->created_at->diffForHumans() }}</p>
-            <p class="timestamp">Updated At: {{ $project->updated_at->diffForHumans() }}</p>
-            <p class="author">
-                Author: {{ $project->user->name ?? 'Unknown User' }}
-            </p>
+            
+            <p class="timestamp"><strong> Created At: </strong>{{ $project->created_at->diffForHumans() }} <strong>Updated At: </strong>{{ $project->updated_at->diffForHumans() }}</p>
+  
 
             @if ($project->project_link)
                 <p class="link">External Link To This Project:

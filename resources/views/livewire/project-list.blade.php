@@ -6,47 +6,50 @@
             <div class="project-content">
 
                 <div class="project-list-text-container">
-                    <div class="flex justify-between items-center">
-                        <a href="{{ route('project.details', $project->id) }}" class="project-item">
+                    <a href="{{ route('project.details', $project->id) }}" class="project-item">
+                        <div class="flex justify-between items-center">
                             <h2>{{ $project->title }}</h2>
+                            <div>
+                                @if ($project->status)
+                                    <div class="project-status">
+                                        {{ $project->status }}
+                                    </div>
+                                @endif
+                                <div class="px-3">
+                                    {{-- @livewire('like-button', ['likeable' => $project], key('like-button-' . $project->id)) --}}
+                                    {{ $project->likes_count }} Likes
 
-                        </a>
-                        <div>
-                            @if ($project->status)
-                                <div class="project-status">
-                                    {{ $project->status }}
                                 </div>
-                            @endif
-                            {{-- <div class="px-3">
-                                @livewire('like-button', ['likeable' => $project], key('like-button-' . $project->id))
-                            </div> --}}
-                        </div>
-                    </div>
-                    <a href="{{ route('bloggers.profile', $project->user->id) }}">
-                        <div class="blogger-name-container">
-
-                            <div class="pfp">
-                                <div class="pfp-container">
-                                    @if ($project->user->bloggerProfile->profile_picture)
-                                        <img src="{{ asset('storage/' . $project->user->bloggerProfile->profile_picture) }}"
-                                            alt="{{ $project->user->name }}'s Profile Picture" class="pfp-container">
-                                    @else
-                                        <img src="{{ asset('images/default-pfp.gif') }}" alt="Default Profile Picture"
-                                            class="pfp-container">
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="blogger-details">
-                                <h3>{{ $project->user->name }}</h3>
-                                <p class="project-info">Created At: {{ $project->created_at->diffForHumans() }}</p>
                             </div>
                         </div>
                     </a>
 
+                    <div class="blogger-name-container">
+
+                        <div class="pfp">
+                            <div class="pfp-container">
+                                @if ($project->user->bloggerProfile->profile_picture)
+                                    <img src="{{ asset('storage/' . $project->user->bloggerProfile->profile_picture) }}"
+                                        alt="{{ $project->user->name }}'s Profile Picture" class="pfp-container">
+                                @else
+                                    <img src="{{ asset('images/default-pfp.gif') }}" alt="Default Profile Picture"
+                                        class="pfp-container">
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="blogger-details">
+                            <a href="{{ route('bloggers.profile', $project->user->id) }}">
+                                <h3>{{ $project->user->name }}</h3>
+                            </a>
+                            <p class="project-info">Created At: {{ $project->created_at->diffForHumans() }}</p>
+                        </div>
+                    </div>
+                    </a>
+
                     <p class="project-info">Description: {{ $project->description }}</p>
                     @if ($project->categories->isNotEmpty())
-                        <div>
+                        <div class="py-3">
                             @foreach ($project->categories as $category)
                                 <span class="category">{{ $category->name }}</span>
                                 @if (!$loop->last)
