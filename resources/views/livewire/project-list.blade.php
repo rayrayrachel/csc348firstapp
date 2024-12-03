@@ -15,37 +15,44 @@
                                         {{ $project->status }}
                                     </div>
                                 @endif
-                                <div class="px-3">
-                                    {{-- @livewire('like-button', ['likeable' => $project], key('like-button-' . $project->id)) --}}
-                                    {{ $project->likes_count }} Likes
 
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="blogger-name-container flex justify-between items-center">
+                        <div class="flex">
+                            <div class="pfp">
+                                <div class="pfp-container">
+                                    @if ($project->user->bloggerProfile->profile_picture)
+                                        <img src="{{ asset('storage/' . $project->user->bloggerProfile->profile_picture) }}"
+                                            alt="{{ $project->user->name }}'s Profile Picture" class="pfp-container">
+                                    @else
+                                        <img src="{{ asset('images/default-pfp.gif') }}" alt="Default Profile Picture"
+                                            class="pfp-container">
+                                    @endif
                                 </div>
                             </div>
-                        </div>
-                    </a>
 
-                    <div class="blogger-name-container">
-
-                        <div class="pfp">
-                            <div class="pfp-container">
-                                @if ($project->user->bloggerProfile->profile_picture)
-                                    <img src="{{ asset('storage/' . $project->user->bloggerProfile->profile_picture) }}"
-                                        alt="{{ $project->user->name }}'s Profile Picture" class="pfp-container">
-                                @else
-                                    <img src="{{ asset('images/default-pfp.gif') }}" alt="Default Profile Picture"
-                                        class="pfp-container">
-                                @endif
+                            <div class="blogger-details">
+                                <a href="{{ route('bloggers.profile', $project->user->id) }}">
+                                    <h3>{{ $project->user->name }}</h3>
+                                </a>
+                                <p class="project-info">Created At: {{ $project->created_at->diffForHumans() }}</p>
                             </div>
                         </div>
+                        <div>
+                            <div class="px-3">
+                                {{-- @livewire('like-button', ['likeable' => $project], key('like-button-' . $project->id)) --}}
+                                {{ $project->likes_count }} Likes
+                            </div>
+                            <div class="px-3">
+                                {{ $project->comments_count }} Comments
 
-                        <div class="blogger-details">
-                            <a href="{{ route('bloggers.profile', $project->user->id) }}">
-                                <h3>{{ $project->user->name }}</h3>
-                            </a>
-                            <p class="project-info">Created At: {{ $project->created_at->diffForHumans() }}</p>
+                            </div>
                         </div>
                     </div>
-                    </a>
+
 
                     <p class="project-info">Description: {{ $project->description }}</p>
                     @if ($project->categories->isNotEmpty())

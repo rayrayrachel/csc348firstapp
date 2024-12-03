@@ -43,16 +43,19 @@ class ProjectList extends Component
             return Project::where('user_id', $currentUser)
                 ->latest()
                 ->withCount('likes')
+                ->withCount('comments')
                 ->paginate($perPage);
         } elseif ($this->userId) {
             return Project::where('user_id', $this->userId)
                 ->latest()
                 ->withCount('likes')
+                ->withCount('comments')
                 ->paginate($perPage);
         } else {
             return Project::with('user')
                 ->latest()
                 ->withCount('likes')
+                ->withCount('comments')
                 ->paginate($perPage);
         }
     }
