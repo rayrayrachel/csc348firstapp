@@ -1,4 +1,4 @@
-<div>
+<div wire:poll>
     <button 
         wire:click="toggleLike" 
         class="flex items-center space-x-2 text-lg {{ $isLiked ? 'text-red-500' : 'text-gray-500' }} hover:text-red-700">

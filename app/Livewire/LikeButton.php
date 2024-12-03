@@ -11,20 +11,23 @@ use Livewire\Attributes\On;
 
 class LikeButton extends Component
 {
-    protected $listeners = ['refreshed' => '$refresh'];
+    protected $listeners = ['submitClicked' => '$refresh', 'confirmClicked' => '$refresh'];
+
     public $likeable;
     public $isLiked = false;
 
     public $likeCount = 0;
 
-    #[On('submitClicked')]
+    #[On('submitClicked', 'confirmClicked')]
     public function mount($likeable)
     {
-        $this->likeable = $likeable;
-        $this->isLiked = $this->likeable->likes()->where('user_id', Auth::id())->exists();
-        $this->likeCount = $likeable->likes()->count();
+        if ($likeable) {
+            $this->likeable = $likeable;
+            $this->isLiked = $this->likeable->likes()->where('user_id', Auth::id())->exists();
+            $this->likeCount = $likeable->likes()->count();
+        }
     }
-    #[On('submitClicked')]
+    #[On('submitClicked', 'confirmClicked')]
     // Toggle like state
     public function toggleLike()
     {
@@ -42,7 +45,7 @@ class LikeButton extends Component
     }
 
 
-    #[On('submitClicked')]
+    #[On('submitClicked', 'confirmClicked')]
 
     public function render()
     {

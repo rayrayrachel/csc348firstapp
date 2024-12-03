@@ -1,8 +1,8 @@
-<div>
+<div wire:poll> 
     @if ($comments->isEmpty())
         <p>No comments yet.</p>
     @else
-        <ul>
+        <div>
             @foreach ($comments as $comment)
                 <li class="comment-container">
                     <a href="{{ route('bloggers.profile', $comment->user->id) }}">
@@ -39,14 +39,36 @@
                                 @livewire('edit-comment', ['comment' => $comment], key('edit-comment-' . $comment->id))
                             </div>
                         @endif
+
+                        @if ($confirmingDelete === $comment->id)
+                            <div class="py-2">
+                                <p class="bg-red-500 py-2">Are you sure you want to delete this comment?</p>
+                                <div class="py-2">
+                                    <button wire:click="deleteComment({{ $comment->id }})"
+                                        class="delete-button bg-red-500 text-white">
+                                        Yes
+                                    </button>
+                                    <button wire:click="$set('confirmingDelete', null)"
+                                        class="cancel-button bg-gray-500 text-white">
+                                        No
+                                    </button>
+                                </div>
+                            </div>
+                        @else
+                            <button wire:click="confirmDelete({{ $comment->id }})"
+                                class="delete-button bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                DELETE
+                            </button>
+                        @endif
                     </div>
 
+                    {{-- bug when delete -> heart crashed --}}
                     <div class="px-3 ">
                         @livewire('like-button', ['likeable' => $comment], key('like-button-' . $comment->id))
 
                         @if (Auth::id() == $comment->user_id)
                             <div class="goto">
-             
+
                                 <button wire:click="toggleEditForm({{ $comment->id }})"
                                     class="edit-button {{ $editingCommentId === $comment->id ? 'btn-danger' : 'edit-button-toggle' }}">
                                     {{ $editingCommentId === $comment->id ? 'QUIT' : 'EDIT' }}
@@ -54,16 +76,18 @@
                             </div>
                         @endif
                     </div>
-
-
-
-
-
                 </li>
             @endforeach
-        </ul>
+
+        </div>
         <div class="pagination">
             {{ $comments->links() }}
         </div>
     @endif
 </div>
+
+<script>
+    window.addEventListener('confirmClicked', event => {
+        location.reload();
+    });
+</script>

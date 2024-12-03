@@ -7,6 +7,8 @@ use App\Models\Project;
 class ProjectDetails extends Component
 {
     public $project;
+    protected $listeners = ['confirmClicked' => '$refresh'];
+    
 
     public function mount(Project $project)
     {

@@ -9,7 +9,7 @@
 
         <div class="element-container" id="projectDetailsContainer">
 
-            @livewire('blogger-p-f-p', ['userId' => $project->user->id])
+            @livewire('blogger-p-f-p', ['userId' => $project->user->id], key('blogger-p-f-p-' . $project->user->id))
 
             <div class="flex justify-between items-center overflow-hidden">
                 <h2 class="truncate max-w-[calc(100%-100px)]">{{ $project->title }}</h2>
@@ -19,8 +19,8 @@
                             {{ $project->status }}
                         </div>
                     @endif
-                    <div class="px-3 ">
-                        @livewire('like-button', ['likeable' => $project],key('like-button-' . $project->id))
+                    <div class="px-3">
+                        @livewire('like-button', ['likeable' => $project], key('like-button-' . $project->id))
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
             </div>
 
             <div class="overflow-hidden">
-                <p >{{ $project->description }}</p>
+                <p>{{ $project->description }}</p>
             </div>
 
             @if ($project->featureimage)
@@ -50,9 +50,7 @@
                 <p class="text-description">Methodology Used: {{ $project->methodology_used }}</p>
             @endif
 
-            
             <p class="timestamp"><strong> Created At: </strong>{{ $project->created_at->diffForHumans() }} <strong>Updated At: </strong>{{ $project->updated_at->diffForHumans() }}</p>
-  
 
             @if ($project->project_link)
                 <p class="link">External Link To This Project:
@@ -65,7 +63,7 @@
 
         <div class="element-container">
 
-            <div class="flex justify-between items-center ">
+            <div class="flex justify-between items-center">
                 <h2>{{ __('Comments') }}</h2>
 
                 @auth
@@ -78,12 +76,12 @@
             </div>
 
             <div class="flex">
-                <div id="commentList" class="w-full  transition-all">
-                    @livewire('comments-display', ['projectId' => $project->id])
+                <div id="commentList" class="w-full transition-all" wire:key="comments-display-{{ $project->id }}">
+                    @livewire('comments-display', ['projectId' => $project->id], key('comments-display-' . $project->id))
                 </div>
 
-                <div id="createCommentForm" class="w-1/3 h-max hidden transition-all">
-                    @livewire('create-comment', ['projectId' => $project->id])
+                <div id="createCommentForm" class="w-1/3 h-max hidden transition-all" wire:key="create-comment-{{ $project->id }}">
+                    @livewire('create-comment', ['projectId' => $project->id], key('create-comment-' . $project->id))
                 </div>
             </div>
         </div>

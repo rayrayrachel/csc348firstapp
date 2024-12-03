@@ -13,7 +13,7 @@ class CreateComment extends Component
 {
     public $projectId;
     public $content;
-
+    protected $listeners = ['confirmClicked' => '$refresh'];
     protected $rules = [
         'content' => 'required|string|max:1000',
     ];

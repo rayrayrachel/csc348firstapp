@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Comment;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsDisplay extends Component
 {
@@ -12,9 +13,12 @@ class CommentsDisplay extends Component
 
     public $projectId;
     public $userId;  
-    public $perPage = 5;  
-    protected $listeners = ['submitClicked' => '$refresh'];
+    public $perPage = 5;
     public $editingCommentId = null;
+    public $confirmingDelete = null;
+
+    protected $listeners = ['submitClicked' => '$refresh', 'confirmClicked' => '$refresh'];
+
 
     public function mount($projectId = null, $userId = null)
     {
@@ -29,6 +33,33 @@ class CommentsDisplay extends Component
             $this->editingCommentId = $commentId; 
         }
     }
+
+    public function confirmDelete($commentId)
+    {
+        $this->confirmingDelete = $commentId;
+
+    }
+
+
+    public function deleteComment($commentId)
+    {
+        $comment = Comment::find($commentId);
+
+        if ($comment && $comment->user_id === Auth::id()) {
+            $comment->delete();
+            session()->flash('message', 'Comment deleted successfully!');
+
+            if ($this->confirmingDelete === $commentId) {
+                $this->confirmingDelete = null;
+            }
+
+            $this->dispatch('confirmClicked');
+        } else {
+            session()->flash('error', 'You are not authorized to delete this comment.');
+        }
+    }
+
+
     public function render()
     {
 
