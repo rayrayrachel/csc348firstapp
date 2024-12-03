@@ -102,7 +102,7 @@ h3 {
     border-radius: 4px;
     font-size: 14px;
     overflow: hidden;
-    
+
 }
 
 .project-content {
@@ -382,6 +382,35 @@ span.text-red-500 {
     background-color: #0080b3;
 }
 
+.edit-button {
+    background-color: #ff9292;
+    color: rgb(0, 0, 0);
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 60px;
+}
+
+.edit-button:hover {
+    background-color: #b30000;
+    color: rgb(255, 255, 255);
+}
+
+.edit-button-toggle {
+    background-color: #bafdff;
+    color: rgb(0, 0, 0);
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 60px;
+}
+
+.edit-button-toggle:hover {
+    background-color: #0080b3;
+    color: rgb(255, 255, 255);
+}
 
 /*PFP*/
 

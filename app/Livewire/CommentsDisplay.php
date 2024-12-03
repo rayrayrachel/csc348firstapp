@@ -14,14 +14,21 @@ class CommentsDisplay extends Component
     public $userId;  
     public $perPage = 5;  
     protected $listeners = ['submitClicked' => '$refresh'];
-
+    public $editingCommentId = null;
 
     public function mount($projectId = null, $userId = null)
     {
         $this->projectId = $projectId;
         $this->userId = $userId;
     }
-
+    public function toggleEditForm($commentId)
+    {
+        if ($this->editingCommentId === $commentId) {
+            $this->editingCommentId = null;
+        } else {
+            $this->editingCommentId = $commentId; 
+        }
+    }
     public function render()
     {
 

@@ -21,23 +21,43 @@
                     </a>
 
                     <div class="comment-text">
-                        <p><strong class="">{{ $comment->user->name }}</strong> says on project:
-                            <strong>{{ $comment->project->title }}</strong> </p>
+                        <p>
+                            <a href="{{ route('bloggers.profile', $comment->user->id) }}">
+                                <strong>{{ $comment->user->name }}</strong>
+                            </a>
+                            says on project:
+                            <a href="{{ route('project.details', $comment->project->id) }}">
+                                <strong>{{ $comment->project->title }}</strong>
+                            </a>
+                        </p>
+
                         <p>{{ $comment->content }}</p>
                         <small class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</small>
+
+                        @if ($editingCommentId === $comment->id)
+                            <div wire:key="comment-{{ $comment->id }}">
+                                @livewire('edit-comment', ['comment' => $comment], key('edit-comment-' . $comment->id))
+                            </div>
+                        @endif
                     </div>
 
-
-                    <div class="px-3">
+                    <div class="px-3 ">
                         @livewire('like-button', ['likeable' => $comment], key('like-button-' . $comment->id))
+
+                        @if (Auth::id() == $comment->user_id)
+                            <div class="goto">
+             
+                                <button wire:click="toggleEditForm({{ $comment->id }})"
+                                    class="edit-button {{ $editingCommentId === $comment->id ? 'btn-danger' : 'edit-button-toggle' }}">
+                                    {{ $editingCommentId === $comment->id ? 'QUIT' : 'EDIT' }}
+                                </button>
+                            </div>
+                        @endif
                     </div>
-                    <div class="goto">
-                        <a href="{{ route('project.details', $comment->project->id) }}">
-                            <button class="goto-button">
-                                GO TO PROJECT
-                            </button>
-                        </a>
-                    </div>
+
+
+
+
 
                 </li>
             @endforeach
