@@ -29,7 +29,7 @@
 
                 <div id="commentContainer" class="hidden transition-all">
                     <h2>{{ __('Comment List') }}</h2>
-                    @livewire('comments-display', ['userId' => Auth::id()])
+                    @livewire('comments-display', ['userId' => $profile->user_id])
                 </div>
 
             </div>
