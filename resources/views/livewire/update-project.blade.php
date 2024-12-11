@@ -134,6 +134,24 @@
                         {{ session('message') }}
                     </div>
                 @endif
+
+                @if (!$confirmingDelete)
+                    <button wire:click="confirmDelete" class="delete-project-button bg-red-500 text-white px-4 py-2 rounded">
+                        Delete Project
+                    </button>
+                @else
+                    <div class="confirmation-container">
+                        <p class="bg-red-500 py-2 text-white">Are you sure you want to delete this project?</p>
+                        <button wire:click="deleteProject"
+                            class="delete-button bg-red-500 text-white px-4 py-2 rounded">
+                            Yes, Delete
+                        </button>
+                        <button wire:click="$set('confirmingDelete', false)"
+                            class="cancel-button bg-gray-500 text-white px-4 py-2 rounded">
+                            No, Cancel
+                        </button>
+                    </div>
+                @endif
             </form>
         </div>
     </div>

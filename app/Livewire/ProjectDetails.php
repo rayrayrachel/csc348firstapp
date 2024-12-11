@@ -13,6 +13,10 @@ class ProjectDetails extends Component
     public function mount(Project $project)
     {
         $this->project = $project;
+
+        if (!$this->project) {
+            return redirect()->route('projects');
+        }
     }
 
     public function render()

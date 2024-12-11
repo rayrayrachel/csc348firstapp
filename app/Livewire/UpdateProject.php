@@ -24,6 +24,8 @@ class UpdateProject extends Component
     public $allCategories = [];
     public $selectedCategory = '';
     public $selectedCategories = [];
+    public $confirmingDelete = false;
+
 
     protected $rules = [
         'title' => 'required|string|max:255',
@@ -42,6 +44,11 @@ class UpdateProject extends Component
     {
         $this->projectId = $projectId;
         $this->project = Project::find($projectId);
+
+
+        if (!$this->project) {
+            return redirect()->route('projects');
+        }
 
         if ($this->project && $this->project->user_id === Auth::id()) {
             $this->title = $this->project->title;
@@ -108,4 +115,26 @@ class UpdateProject extends Component
     {
         return view('livewire.update-project');
     }
+
+    public function confirmDelete()
+    {
+        $this->confirmingDelete = true;
+    }
+
+    public function deleteProject()
+    {
+        $project = Project::find($this->projectId);
+
+        if ($project && $project->user_id === Auth::id()) {
+            $project->delete();
+
+            session()->flash('message', 'Project deleted successfully!');
+
+            return redirect()->route('projects'); 
+        }
+
+        return redirect()->route('projects');
+    }
+
+
 }
