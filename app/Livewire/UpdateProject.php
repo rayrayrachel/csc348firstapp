@@ -26,6 +26,13 @@ class UpdateProject extends Component
     public $selectedCategories = [];
     public $confirmingDelete = false;
 
+    protected $listeners = ['deletePost' => 'redirectAndRefresh'];
+
+    public function redirectAndRefresh()
+    {
+        $this->dispatchBrowserEvent('refreshAndRedirect', ['url' => route('projects')]);
+    }
+
 
     protected $rules = [
         'title' => 'required|string|max:255',
@@ -45,24 +52,25 @@ class UpdateProject extends Component
         $this->projectId = $projectId;
         $this->project = Project::find($projectId);
 
-
         if (!$this->project) {
+            session()->flash('message', 'The project no longer exists.');
             return redirect()->route('projects');
         }
 
-        if ($this->project && $this->project->user_id === Auth::id()) {
-            $this->title = $this->project->title;
-            $this->description = $this->project->description;
-            $this->status = $this->project->status;
-            $this->methodology_used = $this->project->methodology_used;
-            $this->project_link = $this->project->project_link;
-            $this->selectedCategories = $this->project->categories->pluck('id')->toArray();
-        } else {
+        if ($this->project->user_id !== Auth::id()) {
             abort(403, 'Unauthorized action.');
         }
 
+        $this->title = $this->project->title;
+        $this->description = $this->project->description;
+        $this->status = $this->project->status;
+        $this->methodology_used = $this->project->methodology_used;
+        $this->project_link = $this->project->project_link;
+        $this->selectedCategories = $this->project->categories->pluck('id')->toArray();
+
         $this->allCategories = Category::all();
     }
+
 
     public function addCategory()
     {
@@ -85,31 +93,36 @@ class UpdateProject extends Component
 
         $project = Project::find($this->projectId);
 
-        if ($project && $project->user_id === Auth::id()) {
-            $imagePath = $this->featureimage
-                ? $this->featureimage->store('project_images', 'public')
-                : $project->featureimage;
+        if (!$project) {
+            session()->flash('message', 'The project no longer exists.');
+            return redirect()->route('projects');
+        }
 
-            $project->update([
-                'title' => $this->title,
-                'description' => $this->description,
-                'status' => $this->status,
-                'featureimage' => $imagePath,
-                'methodology_used' => $this->methodology_used,
-                'project_link' => $this->project_link,
-            ]);
-
-            $validCategories = array_filter($this->selectedCategories, function ($categoryId) {
-                return (int)$categoryId > 0;
-            });
-
-            $project->categories()->sync($validCategories);
-
-            session()->flash('message', 'Project updated successfully!');
-        } else {
+        if ($project->user_id !== Auth::id()) {
             abort(403, 'Unauthorized action.');
         }
+
+        $imagePath = $this->featureimage
+            ? $this->featureimage->store('project_images', 'public')
+            : $project->featureimage;
+
+        $project->update([
+            'title' => $this->title,
+            'description' => $this->description,
+            'status' => $this->status,
+            'featureimage' => $imagePath,
+            'methodology_used' => $this->methodology_used,
+            'project_link' => $this->project_link,
+        ]);
+
+        $validCategories = array_filter($this->selectedCategories, function ($categoryId) {
+            return (int)$categoryId > 0;
+        });
+        $project->categories()->sync($validCategories);
+
+        session()->flash('message', 'Project updated successfully!');
     }
+
 
     public function render()
     {
@@ -130,11 +143,11 @@ class UpdateProject extends Component
 
             session()->flash('message', 'Project deleted successfully!');
 
-            return redirect()->route('projects'); 
+            $this->dispatch('refreshAndRedirect', ['url' => route('projects')]);
+
+            return; 
         }
 
-        return redirect()->route('projects');
+        $this->dispatch('refreshAndRedirect', ['url' => route('projects')]);
     }
-
-
 }

@@ -11,15 +11,15 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
- 
+
     <!-- Scripts -->
-    
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Livewire Styles -->
-       @livewireStyles
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
@@ -74,6 +74,13 @@
             document.querySelectorAll('form input, form textarea, form select').forEach(field => field.value = '');
         });
     </script>
+
+    <script>
+        window.addEventListener('refreshAndRedirect', event => {
+            window.location.href = event.detail.url;
+        });
+    </script>
+
 </body>
 
 </html>
