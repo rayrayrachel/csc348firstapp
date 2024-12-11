@@ -22,10 +22,12 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+<body class="font-sans antialiased" style="background-image: url('{{ asset('images/background.jpeg') }}'); ">
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.7); z-index: -1;"></div>
 
-        <!-- Livewire Scripts -->
+    <div class="min-h-screen">
+
+        <!-- Livewire Scripts -->   
         @livewireScripts
 
         @include('layouts.navigation')

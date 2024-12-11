@@ -7,6 +7,7 @@ use App\Livewire\BloggerDetails;
 use App\Livewire\BloggerProfileForm;
 use App\Livewire\Dashboard;
 use App\Livewire\UpdateProject;
+use App\Livewire\Welcome;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,11 @@ use App\Http\Controllers\BloggerProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', Welcome::class)->name('welcome');
 
 // Route::prefix('bloggers')->group(function () {
 //     Route::get('/', [BloggerController::class, 'index'])->name('bloggers');
