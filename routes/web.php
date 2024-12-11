@@ -6,6 +6,7 @@ use App\Livewire\BloggerList;
 use App\Livewire\BloggerDetails;
 use App\Livewire\BloggerProfileForm;
 use App\Livewire\Dashboard;
+use App\Livewire\UpdateProject;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -51,12 +52,12 @@ Route::middleware(['auth'])->prefix('blogger/profile')->group(
 Route::middleware('auth')->group(
     function () {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
+        Route::get('projects/{projectId}/edit', UpdateProject::class)->name('projects.edit');
     }
 );
 
 Route::get('/projects', Projects::class)->name('projects');
 Route::get('/projects/{project}', ProjectDetails::class)->name('project.details');
-
 
 Route::get('/bloggers', BloggerList::class)->name('bloggers');
 Route::get('/bloggers/{id}', BloggerDetails::class)->name('bloggers.profile');

@@ -13,7 +13,7 @@ class CommentNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $project;  // Renamed from $post to $project
+    public $project; 
     public $comment;
     public $commenter;
     /**
@@ -42,7 +42,7 @@ class CommentNotification extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.comment-notification',  // Make sure the view path is correct
+            view: 'emails.comment-notification', 
             with: [
                 'project' => $this->project,
                 'comment' => $this->comment,

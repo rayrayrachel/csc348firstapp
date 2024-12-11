@@ -9,8 +9,18 @@
 
         <div class="element-container" id="projectDetailsContainer">
 
-            @livewire('blogger-p-f-p', ['userId' => $project->user->id], key('blogger-p-f-p-' . $project->user->id))
+            <div class="flex justify-between items-center">
+                @livewire('blogger-p-f-p', ['userId' => $project->user->id], key('blogger-p-f-p-' . $project->user->id))
 
+                @if (Auth::id() === $project->user_id)
+                    <a href="{{ route('projects.edit', $project->id) }}">
+                        <button class="submit-btn">
+                            EDIT PROJECT
+                        </button>
+                    </a>
+                @endif
+
+            </div>
             <div class="flex justify-between items-center overflow-hidden">
                 <h2 class="truncate max-w-[calc(100%-100px)]">{{ $project->title }}</h2>
                 <div class="flex">
@@ -50,7 +60,9 @@
                 <p class="text-description">Methodology Used: {{ $project->methodology_used }}</p>
             @endif
 
-            <p class="timestamp"><strong> Created At: </strong>{{ $project->created_at->diffForHumans() }} <strong>Updated At: </strong>{{ $project->updated_at->diffForHumans() }}</p>
+            <p class="timestamp"><strong> Created At: </strong>{{ $project->created_at->diffForHumans() }}
+                <strong>Updated At: </strong>{{ $project->updated_at->diffForHumans() }}
+            </p>
 
             @if ($project->project_link)
                 <p class="link">External Link To This Project:
@@ -80,7 +92,8 @@
                     @livewire('comments-display', ['projectId' => $project->id], key('comments-display-' . $project->id))
                 </div>
 
-                <div id="createCommentForm" class="w-1/3 h-max hidden transition-all" wire:key="create-comment-{{ $project->id }}">
+                <div id="createCommentForm" class="w-1/3 h-max hidden transition-all"
+                    wire:key="create-comment-{{ $project->id }}">
                     @livewire('create-comment', ['projectId' => $project->id], key('create-comment-' . $project->id))
                 </div>
             </div>

@@ -40,7 +40,6 @@
             <div class="form-group">
                 <label for="categories">Categories</label>
                 <div class="flex space-x-4 items-center">
-                    <!-- Dropdown for selecting categories -->
                     <select id="categories" wire:model="selectedCategory"
                         class="form-select w-full border-gray-300 rounded">
                         <option value="">Select a Category</option>
