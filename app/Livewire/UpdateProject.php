@@ -57,7 +57,7 @@ class UpdateProject extends Component
             return redirect()->route('projects');
         }
 
-        if ($this->project->user_id !== Auth::id()) {
+        if ($this->project->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             abort(403, 'Unauthorized action.');
         }
 
@@ -98,7 +98,7 @@ class UpdateProject extends Component
             return redirect()->route('projects');
         }
 
-        if ($project->user_id !== Auth::id()) {
+        if ($project->user_id !== Auth::id()&& Auth::user()->role !== 'admin') {
             abort(403, 'Unauthorized action.');
         }
 
@@ -138,7 +138,7 @@ class UpdateProject extends Component
     {
         $project = Project::find($this->projectId);
 
-        if ($project && $project->user_id === Auth::id()) {
+        if ($project && $project->user_id === Auth::id() || Auth::user()->role === 'admin') {
             $project->delete();
 
             session()->flash('message', 'Project deleted successfully!');

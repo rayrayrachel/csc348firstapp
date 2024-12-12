@@ -12,7 +12,7 @@
             <div class="flex justify-between items-center">
                 @livewire('blogger-p-f-p', ['userId' => $project->user->id], key('blogger-p-f-p-' . $project->user->id))
 
-                @if (Auth::id() === $project->user_id)
+                @if (Auth::id() === $project->user_id || Auth::user()->role === 'admin')
                     <a href="{{ route('projects.edit', $project->id) }}">
                         <button class="submit-btn">
                             EDIT PROJECT

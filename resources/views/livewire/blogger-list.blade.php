@@ -46,6 +46,11 @@
                                             {{ $blogger->user->role == 'admin' ? 'REMOVE ADMIN' : 'MAKE ADMIN' }}
                                         </button>
                                     </div>
+
+                                    @elseif (auth()->user()->role === 'admin' )
+                                    <div class="admin-actions">
+                                        <div class="text-red-500 w-100">Forbidden</div>
+                                    </div>
                                 @endif
                             </div>
                         @endauth
