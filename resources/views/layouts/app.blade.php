@@ -84,10 +84,10 @@
 
 <footer>
     <div class="container mx-auto px-4 text-center">
-        <p>  CSC348 COUSEWORK &copy; 2024 RAY RAY RACHEL. All rights reserved.</p>
+        <div class="mx-auto mb-4" style="max-width: 400px; height: 30px; background-image: url('{{ asset('images/tree.png') }}'); background-size: cover; background-position: center;"></div>
+        <p>CSC348 COURSEWORK &copy; 2024 RAY RAY RACHEL. All rights reserved.</p>
     </div>
 </footer>
-
 
 </body>
 

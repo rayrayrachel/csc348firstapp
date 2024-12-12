@@ -28,7 +28,24 @@ class CategoryFactory extends Factory
             'Music',
             'Lifestyle',
             'Real Estate',
+            'Engineering',
+            'Psychology',
+            'Law',
+            'History',
+            'Sociology',
+            'Agriculture',
+            'Astronomy',
+            'Data Science',
+            'Cybersecurity',
+            'Mathematics',
+            'Biotechnology',
+            'Robotics',
+            'Energy',
+            'Philosophy',
+            'Social Work',
+            'Architecture',
         ];
+
 
         return [
             'name' => $this->faker->unique()->randomElement($categories),

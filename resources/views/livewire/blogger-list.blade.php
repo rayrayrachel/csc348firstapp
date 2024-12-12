@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="page-header">
-            {{ __('Blogger Profile') }}
+            {{ __('Blogger Profiles') }}
         </h2>
     </x-slot>
 

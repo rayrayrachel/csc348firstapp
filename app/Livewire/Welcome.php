@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Welcome extends Component
 {
-    public $welcomeMessage = "Welcome to CV Blogger!";
+    public $welcomeMessage = "Welcome to CV Blog!";
     public $prompt = "Interested in making your CV portfolio? Join Us!";
 
 
