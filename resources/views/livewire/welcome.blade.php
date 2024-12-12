@@ -14,7 +14,7 @@
 
             <div class="element-container">
 
-                <div class="text-center py-10">
+                <div class="text-center py-20">
                     <h1 class="text-4xl font-bold text-teal-600 mb-6"> CV Blog Makes Your Live More Organised</h1>
                     <h3 class="text-gray-700 mb-8"> {{ $prompt }}</h3>
 
