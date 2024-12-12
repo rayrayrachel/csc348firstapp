@@ -7,7 +7,9 @@
         </button>
     @endauth
     @guest
+    <div class="flex items-center space-x-2 text-lg">
         <i class="fas fa-heart"></i>
         <span>{{ $likeCount }}</span>
+    </div>
     @endguest
 </div>

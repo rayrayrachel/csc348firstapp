@@ -45,7 +45,7 @@ class CommentsDisplay extends Component
     {
         $comment = Comment::find($commentId);
 
-        if ($comment && $comment->user_id === Auth::id()) {
+        if ($comment && $comment->user_id === Auth::id()|| Auth::user()->role === 'admin') {
             $comment->delete();
             session()->flash('message', 'Comment deleted successfully!');
 

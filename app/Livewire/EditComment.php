@@ -38,7 +38,8 @@ class EditComment extends Component
         $comment = Comment::find($this->commentId);
         
         if($comment){
-            if (Auth::id() != $comment->user_id) {
+
+            if (Auth::id() != $comment->user_id && Auth::user()->role !== 'admin') {
                 session()->flash('error', 'You are not authorized to edit this comment.');
                 return;
             }
