@@ -73,6 +73,19 @@
                     </a>
                 </p>
             @endif
+
+            @if ($embedUrl)
+                <div class="youtube-video mt-4">
+                    <iframe width="560" height="315" src="{{ $embedUrl }}" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            @else
+                <p class="text-gray-500 mt-4">No valid YouTube video to display.</p>
+            @endif
+
         </div>
 
         <div class="element-container">
