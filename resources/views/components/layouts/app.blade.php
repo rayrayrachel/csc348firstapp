@@ -25,7 +25,7 @@
 <body class="font-sans antialiased" style="background-image: url('{{ asset('images/background.jpeg') }}'); ">
         <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.7); z-index: -1;"></div>
 
-    <div class="min-h-screen">
+    <div >
 
         <!-- Livewire Scripts -->   
         @livewireScripts
@@ -82,6 +82,13 @@
             window.location.href = event.detail.url;
         });
     </script>
+
+<footer>
+    <div class="container mx-auto px-4 text-center">
+        <p>  CSC348 COUSEWORK &copy; 2024 RAY RAY RACHEL. All rights reserved.</p>
+    </div>
+</footer>
+
 
 </body>
 
