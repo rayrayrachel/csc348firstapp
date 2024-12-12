@@ -39,7 +39,7 @@
                     <div class="flex items-center">
                         @auth
                             <div>
-                                @if (auth()->user()->role === 'admin' && auth()->id() !== $blogger->user->id)
+                                @if (auth()->user()->role === 'admin' && auth()->id() !== $blogger->user->id && $blogger->user->id !== 1)
                                     <div class="admin-actions">
                                         <button wire:click="toggleUserRole({{ $blogger->user->id }})"
                                             class="btn btn-toggle-role {{ $blogger->user->role == 'admin' ? 'bg-red-500' : 'bg-green-500' }}">
