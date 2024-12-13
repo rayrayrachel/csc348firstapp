@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
+use App\Mail\LikeNotification;
+
 use App\Models\Like;
 use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Illuminate\Support\Facades\Mail;
 
 class LikeButton extends Component
 {
@@ -37,6 +40,11 @@ class LikeButton extends Component
         } else {
             $this->likeable->likes()->create(['user_id' => Auth::id()]);
             $this->likeCount++;
+        }
+
+        if (method_exists($this->likeable, 'user') && Auth::id() != $this->likeable->user_id) {
+            $owner = $this->likeable->user;
+            Mail::to($owner->email)->send(new LikeNotification($this->likeable, Auth::user()));
         }
 
         $this->isLiked = !$this->isLiked;
