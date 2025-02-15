@@ -43,7 +43,6 @@
                         </div>
                         <div>
                             <div class="px-3">
-                                {{-- @livewire('like-button', ['likeable' => $project], key('like-button-' . $project->id)) --}}
                                 {{ $project->likes_count }} Likes
                             </div>
                             <div class="px-3">
